@@ -34,4 +34,5 @@ func load_data() -> void: ## Opens the save path.
 func _on_clickbutton_button_down() -> void: ## When the clickbutton is pressed, executes this: 
 	gaze += amount_per_click ## When pressed, adds gaze by how much the variable amount_per_click is at. 
 	gaze_changed.emit(gaze) ## Emits a signal to update the counter to the changed amount. 
+	print(gaze)
 	save_data() ## Saves. 

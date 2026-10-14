@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-@onready var gaze_label: Label = $gazeLabel
+@onready var Injuries_label: Label = $Injuries_Label
 
 func _on_game_gaze_changed(amount: int) -> void: ## Gets updates from game.gd and updates the gaze amount accordingly. 
-	gaze_label.text = str(amount) + " gaze"
+	Injuries_label.text = str(amount) + " gaze"
 	
