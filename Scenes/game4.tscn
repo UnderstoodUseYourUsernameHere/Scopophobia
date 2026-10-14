@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" uid="uid://br4iivfe4tni2" path="res://scripts/game.gd" id="1_d6nug"]
 [ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://kill me.png" id="2_r5gpg"]
+[ext_resource type="Script" uid="uid://cs8mu1w00x2y0" path="res://scripts/animations.gd" id="3_0gmi1"]
 [ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/stats.gd" id="3_0r0ym"]
+[ext_resource type="Texture2D" uid="uid://dv86lq8qmrwxb" path="res://assets/Capture.PNG" id="3_4ktiq"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="4_r5gpg"]
 [ext_resource type="FontFile" uid="uid://wpvwiukdbexi" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Bold.ttf" id="5_0r0ym"]
 [ext_resource type="FontFile" uid="uid://cfdeoy40dvcit" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Black.ttf" id="6_yely5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pspmk"]
-bg_color = Color(0.33967668, 0.6473676, 0.75562835, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pspmk"]
+texture = ExtResource("3_4ktiq")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.29914752, 0.10474641, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44ybt"]
-content_margin_left = 5.0
+content_margin_left = 20.0
 content_margin_top = 5.0
-content_margin_right = 5.0
+content_margin_right = 20.0
 content_margin_bottom = 5.0
 bg_color = Color(0.0627451, 0.12941177, 0.39215687, 1)
 
@@ -42,7 +44,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 825.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pspmk")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pspmk")
 
 [node name="MarginContainer" type="MarginContainer" parent="LeftPanel" unique_id=1947754693]
 layout_mode = 1
@@ -55,6 +57,7 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
+script = ExtResource("3_0gmi1")
 
 [node name="Stats" type="VBoxContainer" parent="LeftPanel/MarginContainer" unique_id=705054138]
 layout_mode = 2
@@ -99,11 +102,14 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mi5ts")
 
 [node name="Upgrades" type="Label" parent="." unique_id=620576292]
-layout_mode = 0
-offset_left = 829.0
-offset_top = 3.0
-offset_right = 919.0
-offset_bottom = 28.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_right = -13.0
+offset_bottom = 79.0
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("6_yely5")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_44ybt")
@@ -113,3 +119,5 @@ vertical_alignment = 1
 
 [connection signal="gaze_changed" from="." to="LeftPanel/MarginContainer/Stats" method="_on_game_gaze_changed"]
 [connection signal="button_down" from="LeftPanel/MarginContainer/CenterContainer/Clickbutton" to="." method="_on_clickbutton_button_down"]
+[connection signal="button_down" from="LeftPanel/MarginContainer/CenterContainer/Clickbutton" to="LeftPanel/MarginContainer" method="_on_clickbutton_button_down"]
+[connection signal="button_up" from="LeftPanel/MarginContainer/CenterContainer/Clickbutton" to="LeftPanel/MarginContainer" method="_on_clickbutton_button_up"]
