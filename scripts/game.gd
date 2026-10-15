@@ -1,38 +1,41 @@
 extends Control
 
-const save_path = "user://userdata.save" ## Saves a path for the save file.
-
-var gaze = 0 ## Amount of gaze(base currency) as a variable.
-var amount_per_click = 1 ## Amount of gaze you get per click.
+const SAVE_PATH = "user://userdata.save" ## Saves a path for the save file.
 
 signal gaze_changed(amount: int) ## Signal whenever the amount of gaze changes with the amount in an integer.
 
+var gaze: int = 0 ## Amount of gaze(base currency) as a variable.
+var amount_per_click: int = 1 ## Amount of gaze you get per click.
+var gaze_per_second: float = 0.0 ## Placeholder for later weeks. 
+
+
 func _ready() -> void: ## Loads data and changes gaze to amount saved on game start.
 	load_data()
-	gaze_changed.emit(gaze)
+	gaze_changed.emit(gaze, gaze_per_second)
 
-func save_data() -> void: ## Save function, declares a variable, data, saved. Containing the amount of gaze currently.
-	var data = {
-		"gaze": gaze,
-	}
-	
-	var file = FileAccess.open(save_path, FileAccess.WRITE) ## Opens the save path and writes the saved data into the file.
-	file.store_var(data)
+func _on_street_person_clicked() -> void: ## When a person on street is clicked, adds gaze and emits gaze_changed. 
+	gaze += amount_per_click
+	gaze_changed.emit(gaze, gaze_per_second)
+
+func save_data() -> void: ## Save function.
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE) ## Opens the save path and writes the saved data into the file.
+	if file == null: ## If file is empty, pushes an error that says so, otherwise stores gaze amount and closes. 
+		push_error("Could not open save file: %s" % FileAccess.get_open_error())
+		return
+	file.store_var({"gaze": gaze})
 	file.close()
 
 func load_data() -> void: ## Opens the save path. 
-	if FileAccess.file_exists(save_path): ## Checks if save file exists. 
-		var file = FileAccess.open(save_path, FileAccess.READ) ## Reads the save file if it exists. 
-		var data = file.get_var() ## Reads the stored data. 
-		file.close() ## Closes. 
-		
-		if typeof(data) == TYPE_DICTIONARY: ## Checks if the data loaded is a dictionary, basically a set of key value pairs so the game doesnt crash if its corrupted or missing. 
-			gaze = data.get("gaze", 0) ## Looks for the key, gaze, if gaze is found it loads it, else it defaults to zero. 
-	else:
-		save_data() ## If the save file is empty or if the player is new to the game, instead of just crashing it creates a fresh save file. 
+	if not FileAccess.file_exists(SAVE_PATH):
+		return ## If save file doesnt exist, returns, otherwise executes following code. 
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)  ## Reads the save file if it exists. 
+	if file == null: ## If the file is empty, returns, otherwise continues. 
+		return
+	var data = file.get_var() ## Reads the stored data. 
+	file.close() ## Closes. 
+	if typeof(data) == TYPE_DICTIONARY: ## Checks if loaded data is dictionary type to prevent game crashes. 
+		gaze = data.get("gaze", 0) ## Looks for the key, gaze, if gaze is found it loads it, else it defaults to zero. 
 
-func _on_clickbutton_button_down() -> void: ## When the clickbutton is pressed, executes this: 
-	gaze += amount_per_click ## When pressed, adds gaze by how much the variable amount_per_click is at. 
-	gaze_changed.emit(gaze) ## Emits a signal to update the counter to the changed amount. 
-	print(gaze)
-	save_data() ## Saves. 
+func _notification(what: int) -> void: ## Before saving pushes a notification to the user, if user accepts, saves.
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_data()

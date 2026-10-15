@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cujusmg78vo5j"]
+
+[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://kill me.png" id="1_74dau"]
+[ext_resource type="Script" uid="uid://dn0ub74nb0cah" path="res://person.gd" id="2_wrnb3"]
+
+[node name="Person" type="TextureButton" unique_id=826977275]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_74dau")
+script = ExtResource("2_wrnb3")

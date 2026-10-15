@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Scopophobia"
-run/main_scene="uid://ujssbmk522t7"
+run/main_scene="uid://b0vlklts66esr"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
