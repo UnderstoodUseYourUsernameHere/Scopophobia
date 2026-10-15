@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Punching bag simulator"
-run/main_scene="uid://di0gxxiuanxr7"
+config/name="Scopophobia"
+run/main_scene="uid://ujssbmk522t7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
