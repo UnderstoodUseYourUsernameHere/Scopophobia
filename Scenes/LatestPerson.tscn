@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://dn0ub74nb0cah" path="res://person.gd" id="2_pvgoo"]
 
 [node name="Person" type="TextureButton" unique_id=826977275]
+z_index = 15
 offset_right = 40.0
 offset_bottom = 40.0
+action_mode = 0
 texture_normal = ExtResource("1_nibgx")
 script = ExtResource("2_pvgoo")
