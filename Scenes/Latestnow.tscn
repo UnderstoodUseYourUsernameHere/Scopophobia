@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_xxhbk"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_47qgc"]
 [ext_resource type="FontFile" uid="uid://cfdeoy40dvcit" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Black.ttf" id="7_no3ie"]
+[ext_resource type="Script" uid="uid://dke2btiybhmox" path="res://scripts/upgrade_1.gd" id="8_pcsto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pspmk"]
 bg_color = Color(0.33967668, 0.6473676, 0.75562835, 1)
@@ -20,6 +21,22 @@ bg_color = Color(0.064893216, 0.21050635, 0.016752245, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
+
+[sub_resource type="FontFile" id="FontFile_pspmk"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="Game" type="Control" unique_id=1683267265]
 z_index = -5
@@ -67,7 +84,7 @@ offset_bottom = 736.0
 z_index = -11
 custom_minimum_size = Vector2(817.545, -0.075)
 layout_mode = 0
-offset_left = -45.5
+offset_left = 0.5
 offset_top = 3.0
 offset_right = 830.5
 offset_bottom = 651.0
@@ -142,6 +159,25 @@ offset_top = 82.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mi5ts")
+
+[node name="UpgradesButton" type="TextureButton" parent="RightPanel" unique_id=1589260695]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Upgrade 1" type="RichTextLabel" parent="RightPanel/UpgradesButton" unique_id=1599726762]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 29.0
+offset_right = 292.0
+offset_bottom = 69.0
+theme_override_fonts/bold_italics_font = SubResource("FontFile_pspmk")
+theme_override_font_sizes/normal_font_size = 17
+text = "Increase Gaze Per Second -> 2 "
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_pcsto")
+Cost = null
 
 [connection signal="gaze_changed" from="." to="HBoxContainer/Street/LeftPanel/MarginContainer/Stats" method="_on_game_gaze_changed"]
 [connection signal="person_clicked" from="HBoxContainer/Street" to="." method="_on_street_person_clicked"]

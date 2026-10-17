@@ -2,11 +2,11 @@ extends Control
 
 const SAVE_PATH = "user://userdata.save" ## Saves a path for the save file.
 
-signal gaze_changed(amount: int) ## Signal whenever the amount of gaze changes with the amount in an integer.
+signal gaze_changed(amount: int, per_second: float) ## Signal whenever the amount of gaze changes with the amount in an integer.
 
 var gaze: int = 0 ## Amount of gaze(base currency) as a variable.
 var amount_per_click: int = 1 ## Amount of gaze you get per click.
-var gaze_per_second: float = 0.0 ## Placeholder for later weeks. 
+var gaze_per_second: float = 0 ## Placeholder for later weeks, when upgrades are added that could increase it. 
 
 
 func _ready() -> void: ## Loads data and changes gaze to amount saved on game start.
@@ -36,6 +36,6 @@ func load_data() -> void: ## Opens the save path.
 	if typeof(data) == TYPE_DICTIONARY: ## Checks if loaded data is dictionary type to prevent game crashes. 
 		gaze = data.get("gaze", 0) ## Looks for the key, gaze, if gaze is found it loads it, else it defaults to zero. 
 
-func _notification(what: int) -> void: ## Before saving pushes a notification to the user, if user accepts, saves.
+func _notification(what: int) -> void: ## Saves when the X, or window close button is hit. 
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_data()

@@ -18,7 +18,7 @@ func setup(depth: float, clickable: bool, area: Vector2, horizon_ratio: float) -
 	var x: float = -tex_size.x * s if dir == 1 else area.x
 	position = Vector2(x, y)
 	
-	if clickable:
+	if clickable: ## If a character is spawned clickable, makes them clickable, else shadows them out. 
 		pressed.connect(_on_pressed)
 	else: 
 		modulate = Color(0.08, 0.08, 0.1)
