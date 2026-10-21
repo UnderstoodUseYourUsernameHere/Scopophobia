@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7gi2pakhg6ti"
-path="res://.godot/imported/kill me.png-ad01e3b4030a9a93c987f4c9e5b0d80f.ctex"
+uid="uid://chw5wfwlnuyib"
+path="res://.godot/imported/Scopophobia.apple-touch-icon.png-a7d9a047a651917c359a35a51c14c93f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kill me.png"
-dest_files=["res://.godot/imported/kill me.png-ad01e3b4030a9a93c987f4c9e5b0d80f.ctex"]
+source_file="res://Scopophobia.apple-touch-icon.png"
+dest_files=["res://.godot/imported/Scopophobia.apple-touch-icon.png-a7d9a047a651917c359a35a51c14c93f.ctex"]
 
 [params]
 

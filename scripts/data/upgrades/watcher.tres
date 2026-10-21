@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://bah00snvdgspi"]
+
+[ext_resource type="Texture2D" uid="uid://dv86lq8qmrwxb" path="res://assets/Capture.PNG" id="1_6p7g0"]
+[ext_resource type="Script" uid="uid://48iv7xr4celb" path="res://scripts/data/upgrade_data.gd" id="1_7m6qt"]
+
+[resource]
+script = ExtResource("1_7m6qt")
+id = &"Watcher"
+display_name = "Watcher"
+description = "Someone who watches the street for you."
+icon = ExtResource("1_6p7g0")
+base_cost = 15.0
+gaze_per_second_bonus = 0.1
+metadata/_custom_type_script = "uid://48iv7xr4celb"

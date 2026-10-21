@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bvrdu2g2xmws3"]
+
+[ext_resource type="Script" uid="uid://ckclygyc1aats" path="res://scripts/ui/upgrade_button.gd" id="1_wrrpt"]
+
+[node name="UpgradeButton" type="Button" unique_id=230037766]
+custom_minimum_size = Vector2(75, 90)
+offset_left = 45.0
+offset_right = 175.0
+offset_bottom = 90.0
+script = ExtResource("1_wrrpt")

@@ -2,10 +2,10 @@ extends Control
 
 const SAVE_PATH = "user://userdata.save" ## Saves a path for the save file.
 
-signal gaze_changed(amount: int, per_second: float) ## Signal whenever the amount of gaze changes with the amount in an integer.
+signal gaze_changed(amount: float, per_second: float) ## Signal whenever the amount of gaze changes with the amount in an integer.
 
-var gaze: int = 0 ## Amount of gaze(base currency) as a variable.
-var amount_per_click: int = 1 ## Amount of gaze you get per click.
+var gaze: float = 0.0 ## Amount of gaze(base currency) as a variable.
+var amount_per_click: float = 1.0 ## Amount of gaze you get per click.
 var gaze_per_second: float = 0 ## Placeholder for later weeks, when upgrades are added that could increase it. 
 
 

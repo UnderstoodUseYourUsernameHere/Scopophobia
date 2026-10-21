@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://br4iivfe4tni2" path="res://scripts/game.gd" id="1_k3l1l"]
 [ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="2_62hht"]
 [ext_resource type="PackedScene" uid="uid://7ovxjfsg1ctv" path="res://Scenes/LatestPerson.tscn" id="3_jq1o7"]
-[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/stats.gd" id="4_y5cce"]
+[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_y5cce"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_5clcl"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_oj0y1"]
 [ext_resource type="FontFile" uid="uid://cfdeoy40dvcit" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Black.ttf" id="7_08pe0"]
@@ -20,22 +20,6 @@ bg_color = Color(0.064893216, 0.21050635, 0.016752245, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
-
-[sub_resource type="FontFile" id="FontFile_pspmk"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
 
 [node name="Game" type="Control" unique_id=1683267265]
 z_index = -5
@@ -58,14 +42,13 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -561.0
-offset_right = 561.0
+offset_right = 267.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Street" type="Control" parent="HBoxContainer" unique_id=1607113330]
 z_index = 10
-custom_minimum_size = Vector2(300, 0)
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -158,24 +141,6 @@ offset_top = 82.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mi5ts")
-
-[node name="UpgradesButton" type="TextureButton" parent="RightPanel" unique_id=1589260695]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Upgrade 1" type="RichTextLabel" parent="RightPanel/UpgradesButton" unique_id=1599726762]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 29.0
-offset_right = 292.0
-offset_bottom = 69.0
-theme_override_fonts/bold_italics_font = SubResource("FontFile_pspmk")
-theme_override_font_sizes/normal_font_size = 17
-text = "Increase Gaze Per Click -> 2 
-"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="gaze_changed" from="." to="HBoxContainer/Street/LeftPanel/MarginContainer/Stats" method="_on_game_gaze_changed"]
 [connection signal="person_clicked" from="HBoxContainer/Street" to="." method="_on_street_person_clicked"]

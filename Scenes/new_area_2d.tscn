@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c86gvmwjxgm20"]
 
 [ext_resource type="Script" uid="uid://dvtc8qiqnp3rh" path="res://scripts/area_2d.gd" id="1_5m212"]
-[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://kill me.png" id="2_n6818"]
+[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://assets/kill me.png" id="2_n6818"]
 
 [node name="Area2D" type="Area2D" unique_id=2091002033]
 script = ExtResource("1_5m212")

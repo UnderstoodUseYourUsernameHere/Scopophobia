@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://br4iivfe4tni2" path="res://scripts/game.gd" id="1_pklmf"]
 [ext_resource type="FontFile" uid="uid://cfdeoy40dvcit" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Black.ttf" id="3_003ix"]
 [ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="3_squbx"]
-[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/stats.gd" id="4_n7h37"]
+[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_n7h37"]
 [ext_resource type="PackedScene" uid="uid://7ovxjfsg1ctv" path="res://Scenes/LatestPerson.tscn" id="4_squbx"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_u3hf2"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_cidis"]

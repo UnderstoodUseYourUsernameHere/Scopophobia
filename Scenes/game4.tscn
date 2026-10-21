@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cx7nk2a2mke8f"]
 
 [ext_resource type="Script" uid="uid://br4iivfe4tni2" path="res://scripts/game.gd" id="1_d6nug"]
-[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://kill me.png" id="2_r5gpg"]
+[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://assets/kill me.png" id="2_r5gpg"]
 [ext_resource type="Script" uid="uid://cs8mu1w00x2y0" path="res://scripts/animations.gd" id="3_0gmi1"]
-[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/stats.gd" id="3_0r0ym"]
+[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="3_0r0ym"]
 [ext_resource type="Texture2D" uid="uid://dv86lq8qmrwxb" path="res://assets/Capture.PNG" id="3_4ktiq"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="4_r5gpg"]
 [ext_resource type="FontFile" uid="uid://wpvwiukdbexi" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Bold.ttf" id="5_0r0ym"]

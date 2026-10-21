@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://di0gxxiuanxr7"]
 
 [ext_resource type="Script" uid="uid://br4iivfe4tni2" path="res://scripts/game.gd" id="1_i6g32"]
-[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://kill me.png" id="2_1l0tm"]
-[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/stats.gd" id="3_v158k"]
+[ext_resource type="Texture2D" uid="uid://c7gi2pakhg6ti" path="res://assets/kill me.png" id="2_1l0tm"]
+[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="3_v158k"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="4_h4fw4"]
 [ext_resource type="FontFile" uid="uid://wpvwiukdbexi" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Bold.ttf" id="5_ldgsr"]
 [ext_resource type="FontFile" uid="uid://cfdeoy40dvcit" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Black.ttf" id="6_o5yvi"]
