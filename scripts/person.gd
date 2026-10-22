@@ -19,7 +19,7 @@ func setup(
 		return
 	
 	var texture_size := texture_normal.get_size() * 0.5
-	var person_scale := lerpf(0.2, 0.8, depth)
+	var person_scale := lerpf(0.15, 0.6, depth)
 	
 	scale = Vector2(person_scale, person_scale)
 	z_index = int(depth * 100)

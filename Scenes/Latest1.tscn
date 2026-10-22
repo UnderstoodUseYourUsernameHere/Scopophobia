@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da2serisklbcv" path="res://scripts/ui/game_screen.gd" id="1_q23am"]
 [ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="2_cr34r"]
+[ext_resource type="Texture2D" uid="uid://lcpupypt1l0u" path="res://assets/Background.png" id="2_d6pld"]
 [ext_resource type="PackedScene" uid="uid://cujusmg78vo5j" path="res://Scenes/person.tscn" id="3_dwu4x"]
 [ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_s22n3"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
@@ -12,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://7fk6pur6ycad" path="res://assets/basicoeye.png" id="10_s22n3"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pspmk"]
-bg_color = Color(0.33967668, 0.6473676, 0.75562835, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
+texture = ExtResource("2_d6pld")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
@@ -71,10 +72,10 @@ z_index = -11
 custom_minimum_size = Vector2(817.545, -0.075)
 layout_mode = 0
 offset_left = 4.5
-offset_top = 3.0
+offset_top = -4.0
 offset_right = 852.0
-offset_bottom = 651.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_pspmk")
+offset_bottom = 636.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rbm7")
 
 [node name="Street" type="Control" parent="MainLayout/PlayArea" unique_id=1607113330]
 unique_name_in_owner = true
@@ -85,14 +86,16 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 9.0
-offset_top = 210.0
+offset_top = 393.0
 offset_right = -9.0
-offset_bottom = -9.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
+spawn_interval = 0.5
+clickable_chance = 0.3
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
