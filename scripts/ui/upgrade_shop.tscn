@@ -4,6 +4,8 @@
 [ext_resource type="FontFile" uid="uid://wpvwiukdbexi" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Bold.ttf" id="2_aq3oc"]
 
 [node name="UpgradeShop" type="VBoxContainer" unique_id=609161933]
+offset_right = 117.0
+offset_bottom = 317.0
 script = ExtResource("1_hoet6")
 
 [node name="Title" type="Label" parent="." unique_id=487142801]
