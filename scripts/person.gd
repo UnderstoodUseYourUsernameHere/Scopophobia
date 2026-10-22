@@ -7,6 +7,7 @@ signal clicked
 
 var speed: float = 0.0 
 
+
 func setup(
 	depth: float,
 	clickable: bool,

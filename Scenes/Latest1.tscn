@@ -8,14 +8,23 @@
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
 [ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
-[ext_resource type="Script" uid="uid://48iv7xr4celb" path="res://scripts/data/upgrade_data.gd" id="9_4rbm7"]
-[ext_resource type="Resource" uid="uid://bah00snvdgspi" path="res://scripts/data/upgrades/watcher.tres" id="10_d6pld"]
+[ext_resource type="Script" uid="uid://cwjfhh4qbnpqc" path="res://scripts/upgrade_data.gd" id="9_o1gcn"]
+[ext_resource type="Texture2D" uid="uid://7fk6pur6ycad" path="res://assets/basicoeye.png" id="10_s22n3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pspmk"]
 bg_color = Color(0.33967668, 0.6473676, 0.75562835, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
+
+[sub_resource type="Resource" id="Resource_o77ts"]
+script = ExtResource("9_o1gcn")
+id = &"Watcher"
+display_name = "Watcher"
+description = " Hired goon that watches the street for ya! "
+icon = ExtResource("10_s22n3")
+gaze_per_second_bonus = 0.1
+metadata/_custom_type_script = "uid://cwjfhh4qbnpqc"
 
 [node name="GameScreen" type="Control" unique_id=1683267265]
 z_index = -5
@@ -136,7 +145,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
-upgrades = Array[ExtResource("9_4rbm7")]([ExtResource("10_d6pld"), null])
+upgrades = Array[ExtResource("9_o1gcn")]([SubResource("Resource_o77ts"), null])
 
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true

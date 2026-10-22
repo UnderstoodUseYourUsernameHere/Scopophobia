@@ -25,8 +25,7 @@ func _process(delta: float) -> void:
 		_emit_gaze_changed()
 
 func click_person() -> void:
-	gaze += amount_per_click
-	gaze_changed.emit(gaze, gaze_per_second)
+	add_gaze(amount_per_click)
 
 func add_gaze(amount: float) -> void:
 	gaze += amount_per_click

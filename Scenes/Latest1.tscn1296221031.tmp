@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://qvl37w0p8w"]
+
+[ext_resource type="Script" uid="uid://da2serisklbcv" path="res://scripts/ui/game_screen.gd" id="1_q23am"]
+[ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="2_cr34r"]
+[ext_resource type="PackedScene" uid="uid://cujusmg78vo5j" path="res://Scenes/person.tscn" id="3_dwu4x"]
+[ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_s22n3"]
+[ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
+[ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
+[ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
+[ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pspmk"]
+bg_color = Color(0.33967668, 0.6473676, 0.75562835, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
+bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
+
+[sub_resource type="GDScript" id="GDScript_cr34r"]
+script/source = "class_name UpgradeData
+extends Resource
+
+@export var id: StringName
+@export var display_name: String = \"Upgrade\"
+@export_multiline var description: String = \" \"
+@export var icon: Texture2D
+
+@export_group(\"Price\")
+@export var base_cost: float = 10.0
+@export var cost_multiplier: float = 1.15
+
+@export_group(\"Effect\")
+@export var gaze_per_second_bonus: float = 0.0
+@export var gaze_per_click_bonus: float = 0.0
+"
+
+[node name="GameScreen" type="Control" unique_id=1683267265]
+z_index = -5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_q23am")
+
+[node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
+z_index = -10
+custom_minimum_size = Vector2(1.99, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayArea" type="Control" parent="MainLayout" unique_id=44823053]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="Panel" parent="MainLayout/PlayArea" unique_id=448794529]
+z_index = -11
+custom_minimum_size = Vector2(817.545, -0.075)
+layout_mode = 0
+offset_left = 4.5
+offset_top = 3.0
+offset_right = 852.0
+offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pspmk")
+
+[node name="Street" type="Control" parent="MainLayout/PlayArea" unique_id=1607113330]
+unique_name_in_owner = true
+z_index = 10
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 210.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("2_cr34r")
+person_scene = ExtResource("3_dwu4x")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
+z_index = -6
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.5
+offset_top = -11.0
+offset_right = 53.18994
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0018643, 0.96581817)
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Stats" type="VBoxContainer" parent="MainLayout/PlayArea/MarginContainer" unique_id=705054138]
+z_index = 6
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("4_s22n3")
+
+[node name="GazeLabel" type="Label" parent="MainLayout/PlayArea/MarginContainer/Stats" unique_id=1226584436]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_4rbm7")
+theme_override_font_sizes/font_size = 40
+text = "0 Gaze"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GpsLabel" type="Label" parent="MainLayout/PlayArea/MarginContainer/Stats" unique_id=2111398423]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_d6pld")
+theme_override_font_sizes/font_size = 33
+text = "0  Gaze per second"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightPanel" type="Panel" parent="MainLayout" unique_id=1596904899]
+z_index = -10
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mi5ts")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainLayout/RightPanel" unique_id=1066709766]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 10.0
+offset_right = 256.0
+offset_bottom = 50.0
+
+[node name="UpgradeShop" parent="MainLayout/RightPanel/MarginContainer" unique_id=609161933 instance=ExtResource("7_cr34r")]
+z_index = 5
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 0
+upgrade_button_scene = ExtResource("8_s22n3")
+upgrades = Array[SubResource("GDScript_cr34r")]([null, null])
+
+[node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
+unique_name_in_owner = true
+wait_time = 15.0
+autostart = true
