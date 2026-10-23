@@ -100,7 +100,7 @@ script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
 spawn_interval = 1.0
 clickable_chance = 1.0
-horizon_ratio = 0.165
+horizon_ratio = 0.061
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6

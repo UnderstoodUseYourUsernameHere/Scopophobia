@@ -20,8 +20,8 @@ func setup(
 		push_error("Person has no normal texturee bud!")
 		return
 	
-	var texture_size := texture_normal.get_size() * 0.3
-	var person_scale := lerpf(0.15, 0.6, depth)
+	var texture_size := texture_normal.get_size() 
+	var person_scale := lerpf(0.10, 0.4, depth)
 	
 	scale = Vector2(person_scale, person_scale)
 	z_index = int(depth * 50)
