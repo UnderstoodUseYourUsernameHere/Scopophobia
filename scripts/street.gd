@@ -1,7 +1,7 @@
 class_name Street
 extends Control
 
-signal person_clicked
+signal person_clicked(person: Person)
 
 @export var person_scene: PackedScene
 @export var spawn_interval: float = 0.9
@@ -40,5 +40,5 @@ func _spawn_person() -> void:
 	person.clicked.connect(_on_person_clicked)
 
 
-func _on_person_clicked() -> void:
-	person_clicked.emit()
+func _on_person_clicked(person: Person) -> void:
+	person_clicked.emit(person)

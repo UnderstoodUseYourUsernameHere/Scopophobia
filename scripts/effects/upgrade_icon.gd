@@ -38,3 +38,6 @@ func _follow_target() -> void:
 	var body_size := _target.texture_normal.get_size() * _target.scale
 	var head := _target.position + Vector2(body_size.x * 0.5, 0.0)
 	position = head - size * 0.5 + offset
+
+func is_tracking_candidate(candidate: Person) -> bool:
+	return is_instance_valid(_target) and _target == candidate

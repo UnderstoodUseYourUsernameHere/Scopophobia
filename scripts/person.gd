@@ -3,7 +3,7 @@ extends TextureButton
 
 @onready var street := get_parent() as Control
 
-signal clicked 
+signal clicked(person: Person) 
 
 var speed: float = 0.0 
 
@@ -54,5 +54,5 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_pressed() -> void:
-	clicked.emit()
+	clicked.emit(self)
 	queue_free()

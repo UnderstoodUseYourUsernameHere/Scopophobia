@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://lcpupypt1l0u" path="res://assets/Background.png" id="2_d6pld"]
 [ext_resource type="PackedScene" uid="uid://cujusmg78vo5j" path="res://Scenes/person.tscn" id="3_dwu4x"]
 [ext_resource type="PackedScene" uid="uid://rdusrnjbbqdm" path="res://scripts/effects/clicked_scene.tscn" id="3_tgrnp"]
+[ext_resource type="PackedScene" uid="uid://bg0vracg8mx8f" path="res://Scenes/chase_minigame.tscn" id="4_16n3g"]
 [ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_s22n3"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
@@ -55,6 +56,8 @@ mouse_filter = 1
 script = ExtResource("1_q23am")
 upgrade_icon_scene = ExtResource("2_0oycc")
 clicked_text_scene = ExtResource("3_tgrnp")
+chase_minigame_scene = ExtResource("4_16n3g")
+max_upgrade_icons = null
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
 z_index = -10
@@ -98,8 +101,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 1.0
-clickable_chance = 1.0
+spawn_interval = 0.5
+clickable_chance = 0.445
 horizon_ratio = 0.061
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]

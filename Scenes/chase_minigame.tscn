@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bg0vracg8mx8f"]
+
+[ext_resource type="Script" uid="uid://d18oswitgvaxp" path="res://scripts/minigame/chase_minigame.gd" id="1_6o6hq"]
+
+[node name="ChaseMinigame" type="Control" unique_id=1211788485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6o6hq")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1819421255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(7.882012e-05, 0.12151452, 0.19521245, 0.7019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=608379598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="CenterContainer" unique_id=624039929]
+custom_minimum_size = Vector2(640, 420)
+layout_mode = 2
+
+[node name="Vbox" type="VBoxContainer" parent="CenterContainer/Card" unique_id=1465626530]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/Card/Vbox" unique_id=997371125]
+layout_mode = 2
+
+[node name="Arena" type="Label" parent="CenterContainer/Card/Vbox" unique_id=381762188]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+
+[node name="Runner" type="TextureRect" parent="CenterContainer/Card/Vbox/Arena" unique_id=1670809100]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="Status" type="Label" parent="CenterContainer/Card/Vbox" unique_id=1293597784]
+layout_mode = 2
