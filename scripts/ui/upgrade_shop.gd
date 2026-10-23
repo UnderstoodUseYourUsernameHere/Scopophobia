@@ -26,8 +26,3 @@ func _ready() -> void:
 		
 		upgrade_list.add_child(button)
 		button.setup(data)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

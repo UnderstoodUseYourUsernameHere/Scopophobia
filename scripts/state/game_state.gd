@@ -1,6 +1,7 @@
 extends Node
 
 signal gaze_changed(amount: float, per_second: float)
+signal upgrade_purchased(data: UpgradeData)
 
 const SAVE_PATH := "user://userdata.save"
 
@@ -56,6 +57,7 @@ func buy_upgrade(data: UpgradeData) -> bool:
 	gaze_per_second += data.gaze_per_second_bonus
 	amount_per_click += data.gaze_per_click_bonus
 	
+	upgrade_purchased.emit(data)
 	_emit_gaze_changed()
 	return true
 

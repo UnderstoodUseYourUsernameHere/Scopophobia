@@ -7,6 +7,8 @@ signal clicked
 
 var speed: float = 0.0 
 
+func _ready() -> void:
+	add_to_group("people")
 
 func setup(
 	depth: float,
@@ -18,11 +20,11 @@ func setup(
 		push_error("Person has no normal texturee bud!")
 		return
 	
-	var texture_size := texture_normal.get_size() * 0.5
+	var texture_size := texture_normal.get_size() * 0.3
 	var person_scale := lerpf(0.15, 0.6, depth)
 	
 	scale = Vector2(person_scale, person_scale)
-	z_index = int(depth * 100)
+	z_index = int(depth * 50)
 	
 	var direction := 1 if randf() < 0.5 else -1
 	

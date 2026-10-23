@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qvl37w0p8w"]
 
 [ext_resource type="Script" uid="uid://da2serisklbcv" path="res://scripts/ui/game_screen.gd" id="1_q23am"]
+[ext_resource type="PackedScene" uid="uid://rdusrnjbbqdm" path="res://scripts/effects/clicked_scene.tscn" id="2_0oycc"]
 [ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="2_cr34r"]
 [ext_resource type="Texture2D" uid="uid://lcpupypt1l0u" path="res://assets/Background.png" id="2_d6pld"]
 [ext_resource type="PackedScene" uid="uid://cujusmg78vo5j" path="res://Scenes/person.tscn" id="3_dwu4x"]
@@ -35,7 +36,7 @@ display_name = "Eye for an eye"
 description = " An eye for an eye and the world goes blind! Or, in your case, only you! "
 icon = ExtResource("11_4rbm7")
 base_cost = 150.0
-cost_multiplier = 1.2349999999999999
+cost_multiplier = 1.235
 gaze_per_second_bonus = 1.0
 gaze_per_click_bonus = -0.5
 metadata/_custom_type_script = "uid://cwjfhh4qbnpqc"
@@ -51,6 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_q23am")
+clicked_text_scene = ExtResource("2_0oycc")
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
 z_index = -10
@@ -88,14 +90,15 @@ anchor_bottom = 1.0
 offset_left = 9.0
 offset_top = 393.0
 offset_right = -9.0
-offset_bottom = -88.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
 spawn_interval = 0.5
-clickable_chance = 0.3
+clickable_chance = 0.478
+horizon_ratio = 0.035
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6

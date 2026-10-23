@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://rdusrnjbbqdm"]
+
+[ext_resource type="Script" uid="uid://b67t4tslhts24" path="res://scripts/effects/clicked_text.gd" id="1_btln2"]
+
+[node name="ClickedScene" type="Label" unique_id=490929990]
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+script = ExtResource("1_btln2")
