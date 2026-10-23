@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://0cfe7qet4p0y" path="res://scripts/street.gd" id="2_cr34r"]
 [ext_resource type="Texture2D" uid="uid://lcpupypt1l0u" path="res://assets/Background.png" id="2_d6pld"]
 [ext_resource type="PackedScene" uid="uid://cujusmg78vo5j" path="res://Scenes/person.tscn" id="3_dwu4x"]
+[ext_resource type="PackedScene" uid="uid://rdusrnjbbqdm" path="res://scripts/effects/clicked_scene.tscn" id="3_tgrnp"]
 [ext_resource type="Script" uid="uid://b31jnrnitr2q8" path="res://scripts/ui/stats.gd" id="4_s22n3"]
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
@@ -52,7 +53,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_q23am")
-clicked_text_scene = ExtResource("2_0oycc")
+upgrade_icon_scene = ExtResource("2_0oycc")
+clicked_text_scene = ExtResource("3_tgrnp")
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
 z_index = -10
@@ -96,9 +98,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 0.5
-clickable_chance = 0.478
-horizon_ratio = 0.035
+spawn_interval = 1.0
+clickable_chance = 1.0
+horizon_ratio = 0.165
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
@@ -144,6 +146,21 @@ theme_override_font_sizes/font_size = 33
 text = "0  Gaze per second"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="MainLayout/PlayArea" unique_id=532881992]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 18
+theme_override_icons/icon = ExtResource("11_4rbm7")
+text = "Reset all your progress! "
 
 [node name="RightPanel" type="Panel" parent="MainLayout" unique_id=1596904899]
 z_index = -10

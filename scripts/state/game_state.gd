@@ -29,7 +29,7 @@ func click_person() -> void:
 	add_gaze(amount_per_click)
 
 func add_gaze(amount: float) -> void:
-	gaze += amount_per_click
+	gaze += amount
 	_emit_gaze_changed()
 
 func get_owned(upgrade_id: StringName) -> int:
@@ -105,6 +105,14 @@ func load_data() -> void:
 	if typeof(loaded_upgrades) == TYPE_DICTIONARY:
 		for key in loaded_upgrades:
 			owned_upgrades[String(key)] = int(loaded_upgrades[key])
+
+func reset_data() -> void:
+	gaze = 0.0
+	amount_per_click = 1.0
+	gaze_per_second = 0.0
+	owned_upgrades.clear()
+	save_data()
+	gaze_changed.emit(gaze, gaze_per_second)
 
 func format_number(value: float) -> String:
 	if value < 1_000.0:
