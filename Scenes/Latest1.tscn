@@ -11,11 +11,12 @@
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
 [ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
+[ext_resource type="Script" uid="uid://b4ikbv3q7q2bv" path="res://scripts/data/lane_data.gd" id="8_cmnm8"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
-[ext_resource type="Script" uid="uid://b5iem8jxkoibx" path="res://scripts/upgrade_data.gd" id="9_o1gcn"]
+[ext_resource type="Resource" uid="uid://boboet0so5u2v" path="res://data/lanes/far_lane.tres" id="9_1fieo"]
+[ext_resource type="Resource" uid="uid://b4juppankktgf" path="res://data/lanes/mid_lane.tres" id="10_c7t14"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
-[ext_resource type="Resource" uid="uid://c81hx4sb2wnpw" path="res://data/upgrades/watcher.tres" id="15_mreed"]
-[ext_resource type="Resource" uid="uid://dal2y3v0xy2rs" path="res://data/upgrades/eyeforaneye.tres" id="16_cmnm8"]
+[ext_resource type="Resource" uid="uid://pdu2ctqo1dnu" path="res://data/lanes/near_lane.tres" id="11_24fqt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
 texture = ExtResource("2_d6pld")
@@ -80,9 +81,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
+lanes = Array[ExtResource("8_cmnm8")]([ExtResource("9_1fieo"), ExtResource("10_c7t14"), ExtResource("11_24fqt")])
 spawn_interval = 1.0
-clickable_chance = 1.0
-horizon_ratio = 0.061
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
@@ -163,7 +163,6 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
-upgrades = Array[ExtResource("9_o1gcn")]([ExtResource("15_mreed"), ExtResource("16_cmnm8")])
 
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true

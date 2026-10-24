@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LaneData" format=3 uid="uid://b4juppankktgf"]
+
+[ext_resource type="Script" uid="uid://b4ikbv3q7q2bv" path="res://scripts/data/lane_data.gd" id="1_fcu66"]
+
+[resource]
+script = ExtResource("1_fcu66")
+y_ratio = 0.72
+person_scale = 0.26
+z_base = 10
+speed = 80.0
+spawn_weight = 3.0
+tint = Color(0.73333335, 0.73333335, 0.73333335, 1)
+metadata/_custom_type_script = "uid://b4ikbv3q7q2bv"
