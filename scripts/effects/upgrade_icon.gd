@@ -39,5 +39,10 @@ func _follow_target() -> void:
 	var head := _target.position + Vector2(body_size.x * 0.5, 0.0)
 	position = head - size * 0.5 + offset
 
+func get_target() -> Person:
+	if is_instance_valid(_target) and not _target.is_queued_for_deletion():
+		return _target
+	return null
+
 func is_tracking_candidate(candidate: Person) -> bool:
 	return is_instance_valid(_target) and _target == candidate

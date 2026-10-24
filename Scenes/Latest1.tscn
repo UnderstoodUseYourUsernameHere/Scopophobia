@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
 [ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
+[ext_resource type="PackedScene" uid="uid://6t6ktpuxek7q" path="res://Scenes/background_eye.tscn" id="8_mreed"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
 [ext_resource type="Script" uid="uid://vomayg38sr2h" path="res://scripts/data/upgrade_data.gd" id="18_24fqt"]
@@ -91,9 +92,17 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 0.7
-max_people = 14
-clickable_chance = 0.65
+spawn_interval = 1.0
+max_people = 8
+clickable_chance = 0.81
+
+[node name="BackgroundEye" parent="MainLayout/PlayArea/Street" unique_id=1206677355 instance=ExtResource("8_mreed")]
+z_index = 100
+layout_mode = 1
+offset_left = -31.0
+offset_top = -76.0
+offset_right = -31.0
+offset_bottom = -76.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
