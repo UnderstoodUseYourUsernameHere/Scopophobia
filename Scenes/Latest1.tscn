@@ -62,6 +62,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="PlayArea" type="Control" parent="MainLayout" unique_id=44823053]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -78,15 +79,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_4rbm7")
 [node name="Street" type="Control" parent="MainLayout/PlayArea" unique_id=1607113330]
 unique_name_in_owner = true
 z_index = 10
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 393.0
-offset_right = -9.0
-offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -95,6 +91,8 @@ person_scene = ExtResource("3_dwu4x")
 spawn_interval = 1.0
 max_people = 8
 clickable_chance = 0.81
+far_y_ratio = 0.84
+near_y_ratio = 0.92
 
 [node name="BackgroundEye" parent="MainLayout/PlayArea/Street" unique_id=1206677355 instance=ExtResource("8_mreed")]
 z_index = 100

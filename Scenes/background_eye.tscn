@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c41l8tiwqbpxm" path="res://scripts/ui/background_eye.gd" id="1_1144y"]
 [ext_resource type="Texture2D" uid="uid://dtvmnmsls487u" path="res://assets/BackgroundEye.png" id="2_h0bfe"]
-[ext_resource type="Texture2D" uid="uid://7fk6pur6ycad" path="res://assets/basicoeye.png" id="2_xntd6"]
 
 [node name="BackgroundEye" type="Control" unique_id=1206677355 node_paths=PackedStringArray("pupil")]
-modulate = Color(1, 1, 1, 0.25)
+modulate = Color(1, 1, 1, 0.72900003)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_h0bfe")
 expand_mode = 1
 stretch_mode = 5
 
@@ -42,6 +40,6 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_xntd6")
+texture = ExtResource("2_h0bfe")
 expand_mode = 1
 stretch_mode = 5

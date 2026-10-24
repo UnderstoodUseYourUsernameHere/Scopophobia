@@ -10,6 +10,7 @@ const CLICKABLE_Z_BOOST: int = 600
 
 var speed: float = 0.0
 
+var is_clickable: bool = false
 var _was_clicked: bool = false
 var _despawn_margin: float = 100.0
 
@@ -28,6 +29,8 @@ func setup(
 	if texture_normal == null:
 		push_error("Person has no normal texture!")
 		return
+		
+	is_clickable = clickable
 	
 	var visual_size: Vector2 = texture_normal.get_size() * person_scale
 	scale = Vector2(person_scale, person_scale)

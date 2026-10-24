@@ -9,7 +9,7 @@ extends Control
 
 @export_group("Glancing")
 @export_range(1.0, 60.0, 0.5) var glance_min_delay: float = 6.0
-@export_range(1.0, 6.0, 0.5) var glance_max_delay: float = 14.0
+@export_range(1.0, 60.0, 0.5) var glance_max_delay: float = 14.0
 @export_range(0.5, 8.0, 0.1) var glance_duration: float = 2.5
 
 var _street: Street
@@ -19,7 +19,7 @@ var _time_until_glance: float = 0.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	z_index = 100
+	z_index = 0
 	_street = get_parent() as Street
 	_reset_glance_timer()
 

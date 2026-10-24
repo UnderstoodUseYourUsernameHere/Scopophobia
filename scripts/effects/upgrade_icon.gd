@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if not is_instance_valid(_target) or _target.is_queued_for_deletion():
 		_pick_new_target()
 	
-	if _target == null:
+	if not is_instance_valid(_target):
 		visible = false
 		return
 	
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
  
 func _pick_new_target() -> void:
 	var candidates: Array = get_tree().get_nodes_in_group("people").filter(
-		func(p): return not p.is_queued_for_deletion()
+		func(p): return p is Person and p.is_clickable and not p.is_queued_for_deletion()
 	)
 	
 	if candidates.is_empty():
