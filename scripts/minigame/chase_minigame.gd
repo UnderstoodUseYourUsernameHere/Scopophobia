@@ -85,22 +85,38 @@ func _process(delta: float) -> void:
 	var mouse_position: Vector2 = arena.get_local_mouse_position()
 	var runner_center: Vector2 = runner.position + runner.size * 0.5
 	var away: Vector2 = runner_center - mouse_position
+	var distance_to_cursor: float = away.length()
 	
 	if away.length_squared() < 0.001:
 		away = Vector2.RIGHT
 	
-	var next_position: Vector2 = (
-		runner.position + away.normalized() * flee_speed * delta
-	)
+	var progress: float = clampf(_elapsed / round_seconds, 0.0, 1.0)
+	var move_speed: float = flee_speed * lerpf(0.75, 1.4, progress)
+	
+	# Makes them panic when the eye gets close!
+	if distance_to_cursor < 110.0:
+		move_speed *= 1.25
+	
+	var direction: Vector2 = away.normalized()
 	var max_x: float = maxf(arena.size.x - runner.size.x, 0.0)
 	var max_y: float = maxf(arena.size.y - runner.size.y, 0.0)
+	var next_position: Vector2 = runner.position + direction * move_speed * delta
 	
+	#Prevents sticking on the arena walls, maybe?
+	if next_position.x < 0.0 or next_position.x > max_x:
+		direction.x = -direction.x
+	if next_position.y < 0.0 or next_position.y > max_y:
+		direction.y = -direction.y
+	
+	next_position = runner.position + direction.normalized() * move_speed * delta
 	runner.position = Vector2(
-	 clampf(next_position.x, 0.0, max_x),
-	 clampf(next_position.y, 0.0, max_y)
+		clampf(next_position.x, 0.0, max_x),
+		clampf(next_position.y, 0.0, max_y)
 	)
 	
-	status_label.text = "Click when close - %.1f sec" % maxf(round_seconds - _elapsed, 0.0)
+	var time_left: float = max(round_seconds - _elapsed, 0.0)
+	timer_bar.value = 100.0 * time_left / round_seconds
+	status_label.text = "Click when close to catch them - %.1f sec" % time_left
 
 func _place_runner() -> void:
 	if arena.size.x < runner.size.x or arena.size.y < runner.size.y: 
@@ -151,10 +167,16 @@ func _finish(caught: bool) -> void:
 		status_label.text = "Caught! +%s Gaze" % GameState.format_number(bonus)
 	else:
 		status_label.text = "They escaped your gaze!"
-	get_tree().create_timer(0.8).timeout.connect(_close)
+	
+	_finished = true
+	start_button.text = "Continue"
+	start_button.show()
 
 func _close() -> void:
+	get_tree().paused = false
 	queue_free()
 
 func _exit_tree() -> void:
 	Input.set_custom_mouse_cursor(null)
+	if get_tree() != null:
+		get_tree().paused = false

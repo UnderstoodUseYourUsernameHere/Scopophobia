@@ -40,7 +40,7 @@ func _find_eye_for(person: Person) -> UpgradeIcon:
 
 func _open_chase(person: Person, eye_texture: Texture2D) -> void:
 	if chase_minigame_scene == null:
-		push_error("Gamescreen has no chase minigame scene assigned!")
+		push_error("Gamescreen has no minigame scene assigned!")
 		return
 	
 	var minigame: ChaseMinigame = chase_minigame_scene.instantiate() as ChaseMinigame
@@ -48,20 +48,21 @@ func _open_chase(person: Person, eye_texture: Texture2D) -> void:
 		push_error("Chase minigame scene root needs chase_minigame.gd!")
 		return
 	
-	add_child(minigame)
-	minigame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	minigame.setup(person.texture_normal, eye_texture)
-	minigame.process_mode - Node.PROCESS_MODE_ALWAYS
+	minigame.process_mode = Node.PROCESS_MODE_ALWAYS
 	minigame.z_as_relative = false
 	minigame.z_index = 4096
 	minigame.mouse_filter = Control.MOUSE_FILTER_STOP
+	minigame.modulate.a = 0.0
 	
 	add_child(minigame)
 	minigame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	minigame.setup(person.texture_normal, eye_texture)
 	
+	var fade: Tween = minigame.create_tween()
+	fade.tween_property(minigame, "modulate:a", 1.0, 0.2)
+	
 	_chase_cooldown_remaining = chase_cooldown_seconds
-	get_tree().paused = true
+	get_tree().paused = true 
 
 func _on_upgrade_purchased(data: UpgradeData) -> void:
 	if data == null or data.icon == null:

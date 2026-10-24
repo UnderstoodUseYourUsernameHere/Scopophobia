@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(7.882012e-05, 0.12151452, 0.19521245, 0.7019608)
+color = Color(0.09985284, 0.09985284, 0.09985284, 0.79)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=608379598]
 layout_mode = 1
@@ -45,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Card" type="PanelContainer" parent="CenterContainer" unique_id=624039929]
-custom_minimum_size = Vector2(640, 420)
+custom_minimum_size = Vector2(560, 420)
 layout_mode = 2
 
 [node name="Vbox" type="VBoxContainer" parent="CenterContainer/Card" unique_id=1465626530]
@@ -53,9 +53,12 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="CenterContainer/Card/Vbox" unique_id=997371125]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
+vertical_alignment = 1
 
 [node name="Instructions" type="Label" parent="CenterContainer/Card/Vbox" unique_id=390577797]
 layout_mode = 2
+vertical_alignment = 1
 
 [node name="Arena" type="Panel" parent="CenterContainer/Card/Vbox" unique_id=1073126367]
 custom_minimum_size = Vector2(500, 260)
