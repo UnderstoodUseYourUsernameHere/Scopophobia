@@ -7,7 +7,7 @@ func setup(message: String, at_global: Vector2) -> void:
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	z_index = 300
+	z_index = 1100
 	
 	var tween := create_tween()
 	tween.set_parallel(true)

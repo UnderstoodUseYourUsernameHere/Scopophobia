@@ -11,18 +11,28 @@
 [ext_resource type="FontFile" uid="uid://ce8rhadne6x1v" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Bold.ttf" id="5_4rbm7"]
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
 [ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
-[ext_resource type="Script" uid="uid://b4ikbv3q7q2bv" path="res://scripts/data/lane_data.gd" id="8_cmnm8"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
-[ext_resource type="Resource" uid="uid://boboet0so5u2v" path="res://data/lanes/far_lane.tres" id="9_1fieo"]
-[ext_resource type="Resource" uid="uid://b4juppankktgf" path="res://data/lanes/mid_lane.tres" id="10_c7t14"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
-[ext_resource type="Resource" uid="uid://pdu2ctqo1dnu" path="res://data/lanes/near_lane.tres" id="11_24fqt"]
+[ext_resource type="Script" uid="uid://vomayg38sr2h" path="res://scripts/data/upgrade_data.gd" id="18_24fqt"]
+[ext_resource type="Resource" uid="uid://bah00snvdgspi" path="res://scripts/data/upgrades/watcher.tres" id="20_ogy8s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
 texture = ExtResource("2_d6pld")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
+
+[sub_resource type="Resource" id="Resource_c7t14"]
+script = ExtResource("18_24fqt")
+id = &"Sacrifice"
+display_name = "Sacrifice"
+description = " An eye for an eye and the world goes blind, or in your case, only you! "
+icon = ExtResource("11_4rbm7")
+base_cost = 50.0
+cost_multiplier = 1.35
+gaze_per_second_bonus = 5.0
+gaze_per_click_bonus = -0.3
+metadata/_custom_type_script = "uid://vomayg38sr2h"
 
 [node name="GameScreen" type="Control" unique_id=1683267265]
 z_index = -5
@@ -81,8 +91,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-lanes = Array[ExtResource("8_cmnm8")]([ExtResource("9_1fieo"), ExtResource("10_c7t14"), ExtResource("11_24fqt")])
-spawn_interval = 1.0
+spawn_interval = 0.7
+max_people = 14
+clickable_chance = 0.65
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
@@ -163,6 +174,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
+upgrades = Array[ExtResource("18_24fqt")]([ExtResource("20_ogy8s"), SubResource("Resource_c7t14")])
 
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true

@@ -7,7 +7,7 @@ var _target: Person
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	z_index = 200
+	z_index = 1000
 	_pick_new_target()
 
 
