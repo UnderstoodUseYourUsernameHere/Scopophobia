@@ -18,4 +18,16 @@ Orrrrr, you can do this:
 - Dark people are not clickable
 - Buy upgrades on the right
 
+## Whats New
+
+New features: 
+-Two added upgrades, one that subtracts your gaze per click but adds extra gaze per second, and one that heals that gaze per click. 
+- Minigame function after upgrade is bought, when you click on an upgrade that upgrades icon is spawned over a person, and when that person is clicked it begins a minigame where you must click over a person that is actively running away for 9x the gaze amount. This is on a timer so you cant repeatedly do it. 
+- Eye in the background that follows you and occasionally locks onto a minigamed person. 
+
+- A new background! Drew it myself, which is why its terrible! 
+
+- Clear all button, this was mostly for *my* debug but this is pretty useful i guess.  
+
+
 This is hopefully pretty simple! Coded in... Gdscript, obviously, using Godot 4. 
