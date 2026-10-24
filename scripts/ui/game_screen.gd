@@ -2,12 +2,13 @@ extends Control
 
 @onready var street: Street = %Street
 @onready var save_timer: Timer = %SaveTimer
+@onready var reset_button: Button = %ResetButton
 @export var upgrade_icon_scene: PackedScene
 @export var clicked_text_scene: PackedScene
 @export var chase_minigame_scene: PackedScene
 @export var max_upgrade_icons: int = 4
-@onready var reset_button: Button = %ResetButton
-
+@export_range(0.0, 120.0, 1.0) var chase_cooldown_seconds: float = 20.0 
+var _chase_cooldown_remaining: float = 0.0
 
 func _ready() -> void:
 	reset_button.pressed.connect(_on_reset_pressed)
@@ -24,8 +25,11 @@ func _on_person_clicked(person: Person) -> void:
 	GameState.click_person()
 	_spawn_clicked_text("+%s" % GameState.format_number(gained), get_global_mouse_position())
 	var eye: UpgradeIcon = _find_eye_for(person)
-	if eye != null:
+	if eye != null and _chase_cooldown_remaining <= 0.0:
 		_open_chase(person, eye.texture)
+
+func _process(delta: float) -> void:
+	_chase_cooldown_remaining = maxf(_chase_cooldown_remaining - delta, 0.0)
 
 func _find_eye_for(person: Person) -> UpgradeIcon:
 	for child in street.get_children():
@@ -47,6 +51,17 @@ func _open_chase(person: Person, eye_texture: Texture2D) -> void:
 	add_child(minigame)
 	minigame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	minigame.setup(person.texture_normal, eye_texture)
+	minigame.process_mode - Node.PROCESS_MODE_ALWAYS
+	minigame.z_as_relative = false
+	minigame.z_index = 4096
+	minigame.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	add_child(minigame)
+	minigame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	minigame.setup(person.texture_normal, eye_texture)
+	
+	_chase_cooldown_remaining = chase_cooldown_seconds
+	get_tree().paused = true
 
 func _on_upgrade_purchased(data: UpgradeData) -> void:
 	if data == null or data.icon == null:

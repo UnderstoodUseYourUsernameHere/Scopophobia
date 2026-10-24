@@ -9,3 +9,4 @@ texture = ExtResource("1_s6vxv")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("1_8d7bd")
+offset = Vector2(0, -20)

@@ -12,36 +12,16 @@
 [ext_resource type="FontFile" uid="uid://dvnkxrw3fnxu1" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-Regular.ttf" id="6_d6pld"]
 [ext_resource type="PackedScene" uid="uid://5rg6geiad558" path="res://scripts/ui/upgrade_shop.tscn" id="7_cr34r"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
-[ext_resource type="Script" uid="uid://cwjfhh4qbnpqc" path="res://scripts/upgrade_data.gd" id="9_o1gcn"]
-[ext_resource type="Texture2D" uid="uid://7fk6pur6ycad" path="res://assets/basicoeye.png" id="10_s22n3"]
+[ext_resource type="Script" uid="uid://b5iem8jxkoibx" path="res://scripts/upgrade_data.gd" id="9_o1gcn"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
+[ext_resource type="Resource" uid="uid://c81hx4sb2wnpw" path="res://data/upgrades/watcher.tres" id="15_mreed"]
+[ext_resource type="Resource" uid="uid://dal2y3v0xy2rs" path="res://data/upgrades/eyeforaneye.tres" id="16_cmnm8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
 texture = ExtResource("2_d6pld")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
-
-[sub_resource type="Resource" id="Resource_o77ts"]
-script = ExtResource("9_o1gcn")
-id = &"Watcher"
-display_name = "Watcher"
-description = " Hired goon that watches the street for ya! "
-icon = ExtResource("10_s22n3")
-gaze_per_second_bonus = 0.1
-metadata/_custom_type_script = "uid://cwjfhh4qbnpqc"
-
-[sub_resource type="Resource" id="Resource_87lpj"]
-script = ExtResource("9_o1gcn")
-id = &"Sacrifice"
-display_name = "Eye for an eye"
-description = " An eye for an eye and the world goes blind! Or, in your case, only you! "
-icon = ExtResource("11_4rbm7")
-base_cost = 150.0
-cost_multiplier = 1.235
-gaze_per_second_bonus = 1.0
-gaze_per_click_bonus = -0.5
-metadata/_custom_type_script = "uid://cwjfhh4qbnpqc"
 
 [node name="GameScreen" type="Control" unique_id=1683267265]
 z_index = -5
@@ -57,7 +37,6 @@ script = ExtResource("1_q23am")
 upgrade_icon_scene = ExtResource("2_0oycc")
 clicked_text_scene = ExtResource("3_tgrnp")
 chase_minigame_scene = ExtResource("4_16n3g")
-max_upgrade_icons = null
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
 z_index = -10
@@ -101,8 +80,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 0.5
-clickable_chance = 0.445
+spawn_interval = 1.0
+clickable_chance = 1.0
 horizon_ratio = 0.061
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
@@ -184,7 +163,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
-upgrades = Array[ExtResource("9_o1gcn")]([SubResource("Resource_o77ts"), SubResource("Resource_87lpj")])
+upgrades = Array[ExtResource("9_o1gcn")]([ExtResource("15_mreed"), ExtResource("16_cmnm8")])
 
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true

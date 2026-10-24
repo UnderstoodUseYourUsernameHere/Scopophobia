@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://dal2y3v0xy2rs"]
+
+[ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="1_on11t"]
+[ext_resource type="Script" uid="uid://b5iem8jxkoibx" path="res://scripts/upgrade_data.gd" id="2_7d2vd"]
+
+[resource]
+script = ExtResource("2_7d2vd")
+id = &"Sacrifice"
+display_name = "Eye for an eye"
+description = " An eye for an eye and the world goes blind! Or, in your case, only you! "
+icon = ExtResource("1_on11t")
+base_cost = 150.0
+cost_multiplier = 1.235
+gaze_per_second_bonus = 1.0
+gaze_per_click_bonus = -0.5
+metadata/_custom_type_script = "uid://cwjfhh4qbnpqc"

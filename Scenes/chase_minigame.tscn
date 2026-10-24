@@ -2,6 +2,18 @@
 
 [ext_resource type="Script" uid="uid://d18oswitgvaxp" path="res://scripts/minigame/chase_minigame.gd" id="1_6o6hq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o6hq"]
+bg_color = Color(0.43235597, 0.06567233, 0.52881914, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.020364614, 0.11234593, 0.33448377, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="ChaseMinigame" type="Control" unique_id=1211788485]
 layout_mode = 3
 anchors_preset = 15
@@ -10,6 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6o6hq")
+flee_speed = 200.0
+round_seconds = 8.0
+catch_radius = 24.0
+bonus_multiplier = 9.0
 
 [node name="Dim" type="ColorRect" parent="." unique_id=1819421255]
 layout_mode = 1
@@ -38,16 +54,31 @@ layout_mode = 2
 [node name="Title" type="Label" parent="CenterContainer/Card/Vbox" unique_id=997371125]
 layout_mode = 2
 
-[node name="Arena" type="Label" parent="CenterContainer/Card/Vbox" unique_id=381762188]
-custom_minimum_size = Vector2(600, 300)
+[node name="Instructions" type="Label" parent="CenterContainer/Card/Vbox" unique_id=390577797]
 layout_mode = 2
 
+[node name="Arena" type="Panel" parent="CenterContainer/Card/Vbox" unique_id=1073126367]
+custom_minimum_size = Vector2(500, 260)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6o6hq")
+
 [node name="Runner" type="TextureRect" parent="CenterContainer/Card/Vbox/Arena" unique_id=1670809100]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 64.0
 mouse_filter = 2
+expand_mode = 1
 stretch_mode = 5
 
+[node name="TimerBar" type="ProgressBar" parent="CenterContainer/Card/Vbox" unique_id=207193106]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+show_percentage = false
+
 [node name="Status" type="Label" parent="CenterContainer/Card/Vbox" unique_id=1293597784]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/Card/Vbox" unique_id=1016978333]
 layout_mode = 2

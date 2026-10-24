@@ -6,10 +6,15 @@ extends Control
 @export_range(12.0, 80.0, 2.0) var catch_radius: float = 36.0
 @export_range(1.0, 20.0, 1.0) var bonus_multiplier: float = 5.0
 
-@onready var arena: Label = $CenterContainer/Card/Vbox/Arena
+@onready var arena: Panel = $CenterContainer/Card/Vbox/Arena
 @onready var runner: TextureRect = $CenterContainer/Card/Vbox/Arena/Runner
 @onready var status_label: Label = $CenterContainer/Card/Vbox/Status
+@onready var instructions_label: Label = $CenterContainer/Card/Vbox/Instructions
+@onready var timer_bar: ProgressBar = $CenterContainer/Card/Vbox/TimerBar
+@onready var start_button: Button = $CenterContainer/Card/Vbox/StartButton
 
+var _eye_texture: Texture2D
+var _finished: bool = false
 var _active: bool = false
 var _runner_placed: bool = false
 var _elapsed: float = 0.0
@@ -24,12 +29,44 @@ func setup(person_texture: Texture2D, eye_texture: Texture2D) -> void:
 	status_label.text = "Catch them! Click when your cursor is close!"
 	_elapsed = 0.0
 	_runner_placed = false
+	_eye_texture = eye_texture
+	_active = false
+	_finished = false
+	
+	instructions_label.text = (
+		"Move the eye cursor towards the runner, they flee from you!"
+		 + "Click when close enough to catch them before time runs out. \n\n" 
+		 + "Catching adds %.0fx your normal click value. Them escaping has no penalty."
+		 + "You still get your normal click reward after!"
+	) % bonus_multiplier
+	arena.hide()
+	timer_bar.value = 100.0
+	timer_bar.hide()
+	status_label.text = "Ready?"
+	start_button.text = "Begin Chase!"
+	start_button.show()
+
+func _on_start_button_pressed() -> void:
+	if _finished:
+		_close()
+		return
+	
+	instructions_label.hide()
+	start_button.hide()
+	arena.show()
+	timer_bar.show()
+	
+	_elapsed = 0.0
+	_runner_placed = false
 	_active = true
 	
-	if eye_texture != null:
-		var eye_size: Vector2i = eye_texture.get_size()
-		var hotspot: Vector2 = Vector2(eye_size.x * 0.5, eye_size.y * 0.5)
-		Input.set_custom_mouse_cursor(eye_texture, Input.CURSOR_ARROW, hotspot)
+	if _eye_texture != null:
+		var eye_size: Vector2i = _eye_texture.get_size()
+		var hotspot := Vector2(eye_size.x * 0.5, eye_size.y * 0.5)
+		Input.set_custom_mouse_cursor(_eye_texture, Input.CURSOR_ARROW, hotspot)
+
+func _ready() -> void:
+	start_button.pressed.connect(_on_start_button_pressed)
 
 func _process(delta: float) -> void:
 	if not _active:
