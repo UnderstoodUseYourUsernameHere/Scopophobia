@@ -2,6 +2,7 @@ class_name BackgroundEye
 extends Control
 
 @export var pupil: TextureRect
+@export var blink_color: Color = Color("0b0b14")
 
 @export_group("Movement")
 @export_range(0.0, 400.0, 1.0) var max_pupil_offset: float = 90.0
@@ -16,6 +17,7 @@ var _street: Street
 var _glance_target: Person
 var _glance_time_left: float = 0.0
 var _time_until_glance: float = 0.0
+var 
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE

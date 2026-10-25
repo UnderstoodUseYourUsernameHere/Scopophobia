@@ -112,6 +112,7 @@ offset_left = -31.0
 offset_top = -76.0
 offset_right = -31.0
 offset_bottom = -76.0
+blink_color = null
 max_pupil_offset = 163.0
 follow_speed = 6.5
 glance_min_delay = 2.0
