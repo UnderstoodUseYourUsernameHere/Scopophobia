@@ -38,6 +38,9 @@ func _find_eye_for(person: Person) -> UpgradeIcon:
 			return eye
 	return null
 
+func is_chase_ready() -> bool:
+	return _chase_cooldown_remaining <= 0.0
+
 func _open_chase(person: Person, eye_texture: Texture2D) -> void:
 	if chase_minigame_scene == null:
 		push_error("Gamescreen has no minigame scene assigned!")

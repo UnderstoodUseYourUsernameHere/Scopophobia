@@ -4,6 +4,7 @@ extends TextureRect
 @export var offset: Vector2 = Vector2(0, -40)
 
 var _target: Person
+var _bob_base_y: float = 0.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -21,6 +22,7 @@ func _process(delta: float) -> void:
 	
 	visible = true
 	_follow_target()
+	_apply_ready_look()
  
 func _pick_new_target() -> void:
 	var claimed_people: Array[Person] = []
@@ -64,7 +66,9 @@ func _pick_new_target() -> void:
 func _follow_target() -> void:
 	var body_size := _target.texture_normal.get_size() * _target.scale
 	var head := _target.position + Vector2(body_size.x * 0.5, 0.0)
-	position = head - size * 0.5 + offset
+	var rest := head - size * 0.5 + offset
+	_bob_base_y = rest.y
+	position = rest
 
 func get_target() -> Person:
 	if is_instance_valid(_target) and not _target.is_queued_for_deletion():
@@ -73,3 +77,17 @@ func get_target() -> Person:
 
 func is_tracking_candidate(candidate: Person) -> bool:
 	return is_instance_valid(_target) and _target == candidate
+
+func is_minigame_ready() -> bool:
+	var root := get_tree().current_scene
+	if root != null and root.has_method("is_chase_ready"):
+		return root.is_chase_ready()
+	return false
+
+func _apply_ready_look() -> void:
+	if is_minigame_ready():
+		var t := Time.get_ticks_msec() * 0.008
+		position.y = _bob_base_y + sin(t) * 6.0
+		modulate = Color(1.25, 1.15, 0.75)
+	else:
+		modulate = Color(0.75, 0.75, 0.85, 0.55)

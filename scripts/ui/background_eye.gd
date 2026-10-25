@@ -23,6 +23,11 @@ func _ready() -> void:
 	_street = get_parent() as Street
 	_reset_glance_timer()
 
+func _is_chase_ready() -> bool:
+	var root := get_tree().current_scene
+	if root != null and root.has_method("is_chase_ready"):
+		return root.is_chase_ready()
+	return false
 
 func _update_glance(delta: float) -> void: 
 	if _glance_target != null:
@@ -30,6 +35,7 @@ func _update_glance(delta: float) -> void:
 		var lost: bool = (
 			not is_instance_valid(_glance_target)
 			or _glance_target.is_queued_for_deletion()
+			or not _is_chase_ready()
 		)
 		if _glance_time_left <= 0.0 or lost:
 			_glance_target = null
@@ -39,6 +45,10 @@ func _update_glance(delta: float) -> void:
 	_time_until_glance -= delta
 	if _time_until_glance > 0.0:
 			return
+	
+	if not _is_chase_ready():
+		_reset_glance_timer()
+		return
 	
 	_glance_target = _pick_marked_person()
 	if _glance_target == null:
@@ -78,7 +88,7 @@ func _pick_marked_person() -> Person:
 		if eye_icon == null:
 			continue
 		var candidate := eye_icon.get_target()
-		if candidate != null:
+		if candidate != null and eye_icon.has_method("is_minigame_ready") and eye_icon.is_minigame_ready():
 			marked.append(candidate)
 	
 	if marked.is_empty():
