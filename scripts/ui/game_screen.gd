@@ -15,6 +15,18 @@ func _ready() -> void:
 	street.person_clicked.connect(_on_person_clicked)
 	GameState.upgrade_purchased.connect(_on_upgrade_purchased)
 	save_timer.timeout.connect(_on_save_timer_timeout)
+	_show_offline_gain()
+
+func _show_offline_gain() -> void:
+	if GameState.pending_offline_gain < 1.0:
+		return
+	var dialog := AcceptDialog.new()
+	dialog.title = "Welcome back bud!"
+	dialog.dialog_text = "The eye kept watching. \n+%s Gaze earned while away." % \
+	GameState.format_number(GameState.pending_offline_gain)
+	add_child(dialog)
+	dialog.popup_centered()
+	GameState.pending_offline_gain = 0.0
 
 func _on_reset_pressed() -> void:
 	GameState.reset_data()
