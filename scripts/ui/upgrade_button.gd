@@ -10,12 +10,16 @@ func _ready() -> void:
 func setup(upgrade_data: UpgradeData) -> void:
 	data = upgrade_data
 	icon = data.icon
-	tooltip_text = data.description
+	tooltip_text = data.description + "\nShift-click: buy up to 10!"
 	_refresh()
 
 func _on_pressed() -> void:
-	if data != null:
-		GameState.buy_upgrade(data)
+	if data == null:
+		return
+	var count: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
+	for i in count:
+		if not GameState.buy_upgrade(data):
+			break
 
 func _on_gaze_changed(
 	amount: float,

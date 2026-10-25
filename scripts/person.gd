@@ -70,4 +70,9 @@ func _on_pressed() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	clicked.emit(self)
-	queue_free()
+	speed *= 0.2
+	var t := create_tween()
+	t.set_parallel(true)
+	t.tween_property(self, "scale", scale * 1.25, 0.12)
+	t.tween_property(self, "modulate:a", 0.0, 0.12)
+	t.chain().tween_callback(queue_free)
