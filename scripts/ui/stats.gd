@@ -18,9 +18,3 @@ func _ready() -> void:
 func _on_gaze_changed(amount: float, per_second: float) -> void:
 	gaze_label.text = "%s gaze" % GameState.format_number(amount)
 	gps_label.text = "%.1f gaze/sec" % per_second
-	_details.text = "Clicks: %d\nchases: %d won / %d lost\nStreak: x%d" % [
-		GameState.total_clicks,
-		GameState.chases_failed,
-		GameState.chases_won,
-		GameState.chase_streak,
-	]

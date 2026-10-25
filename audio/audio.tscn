@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bdvuetbnjggqs"]
+
+[ext_resource type="Script" uid="uid://xhtoqdk28x4c" path="res://audio/audio.gd" id="1_rqear"]
+
+[node name="Audio" type="Node" unique_id=527564819]
+script = ExtResource("1_rqear")
+sfx_pitch_jitter = null
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=826454495]
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=549900033]
+volume_db = -6.0
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="Buy" type="AudioStreamPlayer" parent="." unique_id=2147417279]
+volume_db = -4.0
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="ChaseStart" type="AudioStreamPlayer" parent="." unique_id=831266910]
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="Catch" type="AudioStreamPlayer" parent="." unique_id=2004365788]
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="Escape" type="AudioStreamPlayer" parent="." unique_id=1528255323]
+volume_db = -2.0
+bus = &"SFX"

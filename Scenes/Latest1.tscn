@@ -60,6 +60,7 @@ script = ExtResource("1_q23am")
 upgrade_icon_scene = ExtResource("2_0oycc")
 clicked_text_scene = ExtResource("3_tgrnp")
 chase_minigame_scene = ExtResource("4_16n3g")
+chase_cooldown_seconds = 15.0
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
 z_index = -10
@@ -99,11 +100,12 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 1.0
-max_people = 8
-clickable_chance = 0.81
+spawn_interval = 0.8999999999999999
+max_people = 6
+clickable_chance = 0.63
 far_y_ratio = 0.84
 near_y_ratio = 0.92
+near_scale = 0.29
 
 [node name="BackgroundEye" parent="MainLayout/PlayArea/Street" unique_id=1206677355 instance=ExtResource("8_mreed")]
 z_index = 100
@@ -112,7 +114,6 @@ offset_left = -31.0
 offset_top = -76.0
 offset_right = -31.0
 offset_bottom = -76.0
-blink_color = null
 max_pupil_offset = 163.0
 follow_speed = 6.5
 glance_min_delay = 2.0
