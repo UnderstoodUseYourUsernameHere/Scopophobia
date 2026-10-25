@@ -18,6 +18,7 @@ var _finished: bool = false
 var _active: bool = false
 var _runner_placed: bool = false
 var _elapsed: float = 0.0
+var _speed_boost: float = 0.0
 
 func setup(person_texture: Texture2D, eye_texture: Texture2D) -> void:
 	if person_texture == null:
@@ -59,6 +60,7 @@ func _on_start_button_pressed() -> void:
 	_elapsed = 0.0
 	_runner_placed = false
 	_active = true
+	_speed_boost = minf(GameState.chase_streak * 12.0, 120.0)
 	
 	if _eye_texture != null:
 		var eye_size: Vector2i = _eye_texture.get_size()
@@ -91,7 +93,7 @@ func _process(delta: float) -> void:
 		away = Vector2.RIGHT
 	
 	var progress: float = clampf(_elapsed / round_seconds, 0.0, 1.0)
-	var move_speed: float = flee_speed * lerpf(0.75, 1.4, progress)
+	var move_speed: float = (flee_speed + _speed_boost) * lerpf(0.75, 1.4, progress)
 	
 	# Makes them panic when the eye gets close!
 	if distance_to_cursor < 110.0:
@@ -162,10 +164,17 @@ func _finish(caught: bool) -> void:
 	Input.set_custom_mouse_cursor(null)
 	
 	if caught:
-		var bonus: float = GameState.amount_per_click * bonus_multiplier
+		GameState.chase_streak += 1
+		GameState.chases_won += 1
+		var streak_mult: float = 1.0 + 0.25 * float(GameState.chase_streak - 1)
+		var bonus: float = GameState.amount_per_click * bonus_multiplier * streak_mult
 		GameState.add_gaze(bonus)
-		status_label.text = "Caught! +%s Gaze" % GameState.format_number(bonus)
+		status_label.text = "Caught! +%s Gaze (streak x%d)" % [
+			GameState.format_number(bonus), GameState.chase_streak
+		]
 	else:
+		GameState.chase_streak = 0
+		GameState.chases_failed += 1
 		status_label.text = "They escaped your gaze!"
 	
 	_finished = true

@@ -12,6 +12,10 @@ var owned_upgrades: Dictionary = {}
 
 var _ui_update_elapsed: float = 0.0
 var pending_offline_gain: float = 0.0
+var chase_streak: int = 0
+var chases_won: int = 0
+var chases_failed: int = 0
+var total_clicks: int = 0
 
 func _ready() -> void:
 	load_data()
@@ -27,6 +31,7 @@ func _process(delta: float) -> void:
 		_emit_gaze_changed()
 
 func click_person() -> void:
+	total_clicks += 1
 	add_gaze(amount_per_click)
 
 func add_gaze(amount: float) -> void:
@@ -76,6 +81,10 @@ func save_data() -> void:
 		"gaze_per_second": gaze_per_second,
 		"owned_upgrades": owned_upgrades,
 		"last_saved_unix": Time.get_unix_time_from_system(),
+		"chase_streak": chase_streak,
+		"chases_won": chases_won,
+		"chases_failed": chases_failed,
+		"total_clicks": total_clicks,
 	})
 	
 	file.close()
@@ -100,6 +109,10 @@ func load_data() -> void:
 	gaze = float(data.get("gaze", 0.0))
 	amount_per_click = float(data.get("amount_per_click", 1.0))
 	gaze_per_second = float(data.get("gaze_per_second", 0.0))
+	chase_streak = int(data.get("chase_streak", 0))
+	chases_won = int(data.get("chases_won", 0))
+	chases_failed = int(data.get("chases_failed", 0))
+	total_clicks = int(data.get("total_clicks", 0))
 	
 	owned_upgrades.clear()
 	
@@ -119,6 +132,10 @@ func reset_data() -> void:
 	gaze = 0.0
 	amount_per_click = 1.0
 	gaze_per_second = 0.0
+	chase_streak = 0
+	chases_won = 0 
+	chases_failed = 0
+	total_clicks = 0
 	owned_upgrades.clear()
 	save_data()
 	gaze_changed.emit(gaze, gaze_per_second)
