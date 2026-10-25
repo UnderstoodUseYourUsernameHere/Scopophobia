@@ -28,7 +28,7 @@ func _refresh() -> void:
 		return
 	var amount_owned := GameState.get_owned(data.id)
 	var cost := GameState.get_upgrade_cost(data)
-	var effect_text := " "
+	var effect_text := ""
 	
 	if data.gaze_per_second_bonus != 0.0:
 		effect_text = "+%.1f gaze/sec" % data.gaze_per_second_bonus

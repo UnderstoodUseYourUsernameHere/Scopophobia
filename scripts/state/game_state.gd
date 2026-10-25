@@ -11,6 +11,7 @@ var gaze_per_second: float = 0.0
 var owned_upgrades: Dictionary = {}
 
 var _ui_update_elapsed: float = 0.0
+var pending_offline_gain: float = 0.0
 
 func _ready() -> void:
 	load_data()
@@ -74,6 +75,7 @@ func save_data() -> void:
 		"amount_per_click": amount_per_click,
 		"gaze_per_second": gaze_per_second,
 		"owned_upgrades": owned_upgrades,
+		"last_saved_unix": Time.get_unix_time_from_system(),
 	})
 	
 	file.close()
@@ -105,6 +107,13 @@ func load_data() -> void:
 	if typeof(loaded_upgrades) == TYPE_DICTIONARY:
 		for key in loaded_upgrades:
 			owned_upgrades[String(key)] = int(loaded_upgrades[key])
+	var last_saved: float = float(data.get("last_saved_unix", 0.0))
+	if last_saved > 0.0 and gaze_per_second > 0.0:
+		var elapsed: float = clampf(
+			Time.get_unix_time_from_system() - last_saved, 0.0, 28800.0
+		)
+		pending_offline_gain = gaze_per_second * elapsed * 0.5
+		gaze += pending_offline_gain
 
 func reset_data() -> void:
 	gaze = 0.0

@@ -11,5 +11,5 @@ extends Resource
 @export var cost_multiplier: float = 1.15
 
 @export_group("Effect")
-@export var gaze_per_second_bonus: float = 10.0
+@export var gaze_per_second_bonus: float = 0.0
 @export var gaze_per_click_bonus: float = 0.0
