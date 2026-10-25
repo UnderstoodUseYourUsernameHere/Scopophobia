@@ -42,9 +42,8 @@ id = &"Heal"
 display_name = "Healing"
 description = " Sure, you can do whatever you want as long as youve got the cash! "
 icon = ExtResource("17_cmnm8")
-base_cost = 200.0
-gaze_per_second_bonus = 0.0
-gaze_per_click_bonus = 2.0
+base_cost = 150.0
+gaze_per_click_bonus = 1.0
 metadata/_custom_type_script = "uid://vomayg38sr2h"
 
 [node name="GameScreen" type="Control" unique_id=1683267265]
@@ -113,6 +112,11 @@ offset_left = -31.0
 offset_top = -76.0
 offset_right = -31.0
 offset_bottom = -76.0
+max_pupil_offset = 163.0
+follow_speed = 6.5
+glance_min_delay = 2.0
+glance_max_delay = 5.0
+glance_duration = 3.6
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6

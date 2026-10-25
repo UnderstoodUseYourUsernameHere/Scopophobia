@@ -22,10 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6o6hq")
-flee_speed = 200.0
+flee_speed = 280.0
 round_seconds = 8.0
-catch_radius = 24.0
-bonus_multiplier = 9.0
+catch_radius = 16.0
+bonus_multiplier = 12.0
 
 [node name="Dim" type="ColorRect" parent="." unique_id=1819421255]
 layout_mode = 1

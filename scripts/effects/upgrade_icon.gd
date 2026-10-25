@@ -10,7 +10,6 @@ func _ready() -> void:
 	z_index = 1000
 	_pick_new_target()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not is_instance_valid(_target) or _target.is_queued_for_deletion():
@@ -24,15 +23,43 @@ func _process(delta: float) -> void:
 	_follow_target()
  
 func _pick_new_target() -> void:
-	var candidates: Array = get_tree().get_nodes_in_group("people").filter(
-		func(p): return p is Person and p.is_clickable and not p.is_queued_for_deletion()
-	)
+	var claimed_people: Array[Person] = []
 	
-	if candidates.is_empty():
+	for child in get_parent().get_children():
+		var other_icon := child as UpgradeIcon
+		
+		if other_icon == null or other_icon == self:
+			continue
+		
+		var claimed_target := other_icon.get_target()
+		
+		if claimed_target != null:
+			claimed_people.append(claimed_target)
+		
+	var available_people: Array[Person] = []
+	
+	for node in get_tree().get_nodes_in_group("people"):
+		var candidate := node as Person
+		
+		if candidate == null:
+			continue
+		
+		if candidate.is_queued_for_deletion():
+			continue
+		
+		if candidate.mouse_filter != Control.MOUSE_FILTER_STOP:
+			continue
+		
+		if candidate in claimed_people:
+			continue
+		
+		available_people.append(candidate)
+	
+	if available_people.is_empty():
 		_target = null
 		return
 	
-	_target = candidates.pick_random() as Person
+	_target = available_people.pick_random()
 
 func _follow_target() -> void:
 	var body_size := _target.texture_normal.get_size() * _target.scale
