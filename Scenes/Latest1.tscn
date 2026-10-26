@@ -14,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://6t6ktpuxek7q" path="res://Scenes/background_eye.tscn" id="8_mreed"]
 [ext_resource type="PackedScene" uid="uid://bvrdu2g2xmws3" path="res://scripts/ui/upgrade_button.tscn" id="8_s22n3"]
 [ext_resource type="Texture2D" uid="uid://7r66xatdq1o3" path="res://assets/EyeForAnEye.png" id="11_4rbm7"]
-[ext_resource type="Texture2D" uid="uid://cjg6l71qge1qt" path="res://assets/heal.png" id="17_cmnm8"]
-[ext_resource type="Script" uid="uid://vomayg38sr2h" path="res://scripts/data/upgrade_data.gd" id="18_24fqt"]
-[ext_resource type="Resource" uid="uid://bah00snvdgspi" path="res://scripts/data/upgrades/watcher.tres" id="20_ogy8s"]
 [ext_resource type="PackedScene" uid="uid://dnvvxbfh35crt" path="res://Scenes/settings_menu.tscn" id="15_16n3g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
@@ -24,28 +21,6 @@ texture = ExtResource("2_d6pld")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5ts"]
 bg_color = Color(0.097079314, 0.13842213, 0.39601326, 1)
-
-[sub_resource type="Resource" id="Resource_c7t14"]
-script = ExtResource("18_24fqt")
-id = &"Sacrifice"
-display_name = "Sacrifice"
-description = " An eye for an eye and the world goes blind, or in your case, only you! "
-icon = ExtResource("11_4rbm7")
-base_cost = 50.0
-cost_multiplier = 1.35
-gaze_per_second_bonus = 5.0
-gaze_per_click_bonus = -0.3
-metadata/_custom_type_script = "uid://vomayg38sr2h"
-
-[sub_resource type="Resource" id="Resource_fhqst"]
-script = ExtResource("18_24fqt")
-id = &"Heal"
-display_name = "Healing"
-description = " Sure, you can do whatever you want as long as youve got the cash! "
-icon = ExtResource("17_cmnm8")
-base_cost = 300.0
-gaze_per_click_bonus = 1.0
-metadata/_custom_type_script = "uid://vomayg38sr2h"
 
 [node name="GameScreen" type="Control" unique_id=1683267265]
 z_index = -5
@@ -182,12 +157,6 @@ theme_override_font_sizes/font_size = 18
 theme_override_icons/icon = ExtResource("11_4rbm7")
 text = "Reset all your progress! "
 
-[node name="SettingsButton" type="Button" parent="MainLayout/PlayArea" unique_id=1822038802]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="RightPanel" type="Panel" parent="MainLayout" unique_id=1596904899]
 z_index = -10
 custom_minimum_size = Vector2(300, 0)
@@ -208,13 +177,17 @@ layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
 
-upgrades = Array[ExtResource("18_24fqt")]([ExtResource("20_ogy8s"), SubResource("Resource_c7t14"), SubResource("Resource_fhqst")])
-
-[node name="SettingsMenu" parent="." unique_id=1238915939 instance=ExtResource("15_16n3g")]
-unique_name_in_owner = true
-layout_mode = 1
-
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true
 wait_time = 15.0
 autostart = true
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1822038802]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 81.0
+
+[node name="SettingsMenu" parent="." unique_id=1238915939 instance=ExtResource("15_16n3g")]
+unique_name_in_owner = true
+layout_mode = 1

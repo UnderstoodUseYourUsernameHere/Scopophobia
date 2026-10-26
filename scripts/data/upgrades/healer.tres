@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://s6cbkluwiinc"]
+
+[ext_resource type="Texture2D" uid="uid://cs6b33jh2q72c" path="res://assets/he2al.png" id="1_lmmss"]
+[ext_resource type="Script" uid="uid://vomayg38sr2h" path="res://scripts/data/upgrade_data.gd" id="2_8geyw"]
+
+[resource]
+script = ExtResource("2_8geyw")
+id = &"Healer"
+display_name = "Healer"
+description = "Eye for an eye, can buy more with the right type of cash though! "
+icon = ExtResource("1_lmmss")
+base_cost = 250.0
+cost_multiplier = 1.05
+gaze_per_click_bonus = 2.0
