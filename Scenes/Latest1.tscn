@@ -197,4 +197,5 @@ text = "⚙ Settings"
 
 [node name="SettingsMenu" parent="." unique_id=1238915939 instance=ExtResource("15_16n3g")]
 unique_name_in_owner = true
+z_index = 4096
 layout_mode = 1
