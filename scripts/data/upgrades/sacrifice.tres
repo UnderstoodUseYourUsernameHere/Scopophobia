@@ -7,9 +7,11 @@
 script = ExtResource("2_7gdd2")
 id = &"Sacrifice"
 display_name = "Eye for an Eye"
-description = " An eye for an eye and the world goes blind, or in your case, only you! "
+description = " An eye for an eye and the world goes blind, or in your case, only you! 
+
+Remember that you LOSE gaze per click when buying this! "
 icon = ExtResource("1_1cpvu")
-base_cost = 50.0
+base_cost = 25.0
 cost_multiplier = 1.35
 gaze_per_second_bonus = 4.0
 gaze_per_click_bonus = -0.5

@@ -31,3 +31,7 @@ New features:
 
 
 This is hopefully pretty simple! Coded in... Gdscript, obviously, using Godot 4. 
+
+## Credits
+- SFX: Kenney Interface Sounds (kenney.nl) - CC0
+- Music: "[Phantasm]" by Kevin MacLeod (incompetech.com) - CC-BY 4.0

@@ -15,6 +15,12 @@ func play(sound_name: StringName) -> void:
 	player.pitch_scale = 1.0 + randf_range(-sfx_pitch_jitter, sfx_pitch_jitter)
 	player.play()
 
+func stop(sound_name: StringName) -> void:
+	var player := get_node_or_null(NodePath(sound_name)) as AudioStreamPlayer
+	if player == null:
+		return
+	player.stop()
+
 func set_bus_volume(bus_name: String, linear: float) -> void:
 	var index := AudioServer.get_bus_index(bus_name)
 	if index == -1:
@@ -32,7 +38,7 @@ func _ready() -> void:
 
 func get_bus_volume(bus_name: String) -> float:
 	var index: int = AudioServer.get_bus_index(bus_name)
-	if index == 1:
+	if index == -1:
 		return 1.0
 	if AudioServer.is_bus_mute(index):
 		return 0.0
@@ -48,6 +54,12 @@ func save_volume_settings(music: float, sfx: float) -> void:
 
 func toggle_master_mute() -> void:
 	var index: int = AudioServer.get_bus_index("Master")
+	if index == -1:
+		return
+	AudioServer.set_bus_mute(index, not AudioServer.is_bus_mute(index))
+
+func toggle_mute(bus_name: String) -> void:
+	var index: int = AudioServer.get_bus_index(bus_name)
 	if index == -1:
 		return
 	AudioServer.set_bus_mute(index, not AudioServer.is_bus_mute(index))

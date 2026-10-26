@@ -12,5 +12,5 @@ func _ready() -> void:
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:y", position.y - 60.0, 0.8)
-	tween.tween_property(self, "modulate:a", 0.0, 0.8)
+	tween.tween_property(self, "modulate:a", 0.0, 0.7)
 	tween.finished.connect(queue_free)

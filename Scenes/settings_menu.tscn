@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dnvvxbfh35crt"]
 
 [ext_resource type="Script" uid="uid://b2ewd2ttf1mwb" path="res://scripts/ui/settings_menu.gd" id="1_icv2g"]
+[ext_resource type="FontFile" uid="uid://djugo2bntlaoy" path="res://addons/Fredoka,Nunito,Open_Sans/Fredoka/static/Fredoka-SemiBold.ttf" id="2_8ef0u"]
+[ext_resource type="FontFile" uid="uid://b8t7kdntuiu4q" path="res://addons/Fredoka,Nunito,Open_Sans/Nunito/static/Nunito-Italic.ttf" id="3_7y5a0"]
 
 [node name="SettingsMenu" type="Control" unique_id=1238915939]
 layout_mode = 3
@@ -11,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_icv2g")
 
-[node name="Dim" type="ColorRect" parent="." unique_id=824614586]
+[node name="Dimmer" type="ColorRect" parent="." unique_id=824614586]
 modulate = Color(0.06100855, 0.06100855, 0.06100855, 0.693)
 layout_mode = 1
 anchors_preset = 15
@@ -32,33 +34,92 @@ grow_vertical = 2
 custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=2015552507]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1281385785]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = -150.0
+offset_right = 379.0
+offset_bottom = 129.0
 
-[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1188056051]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=2015552507]
 layout_mode = 2
 
-[node name="MusicLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=128384273]
+[node name="Title" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1188056051]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8ef0u")
+theme_override_font_sizes/font_size = 27
+text = "Settings!"
+horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="CenterContainer/Panel/VBoxContainer" unique_id=1206117067]
+[node name="Shortcuts" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=224619043]
 layout_mode = 2
-max_value = 1.0
-step = 0.01
+theme_override_fonts/font = ExtResource("3_7y5a0")
+theme_override_font_sizes/font_size = 15
+text = "Esc: Close Settings
+M: Mute Music
+N: Mute Sound Effects
+Shift + Click: Bulk buy up to 10"
 
-[node name="SFXLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=402944572]
+[node name="ResetButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1552135305]
+unique_name_in_owner = true
 layout_mode = 2
+text = "Reset Settings"
 
-[node name="SFXSlider" type="HSlider" parent="CenterContainer/Panel/VBoxContainer" unique_id=2139869477]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-
-[node name="Hint" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=224619043]
-layout_mode = 2
-
-[node name="CloseButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1263017806]
+[node name="CloseButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1263017806]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Close!"
+
+[node name="MusicRow" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=254971853]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MusicRow" unique_id=128384273]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Music Vol:"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MusicRow" unique_id=1206117067]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+
+[node name="MusicValue" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MusicRow" unique_id=1265822768]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "100%	"
+
+[node name="MusicMute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MusicRow" unique_id=1100845931]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mute!"
+
+[node name="SFXContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1643256703]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/SFXContainer" unique_id=402944572]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "SFX Vol: "
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/SFXContainer" unique_id=2139869477]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+
+[node name="SFXValue" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/SFXContainer" unique_id=1755501217]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "100%"
+
+[node name="SFXMute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/SFXContainer" unique_id=76402417]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mute SFX!"

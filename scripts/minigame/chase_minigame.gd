@@ -56,6 +56,7 @@ func _on_start_button_pressed() -> void:
 	start_button.hide()
 	arena.show()
 	timer_bar.show()
+	Audio.play("ChaseStart")
 	
 	_elapsed = 0.0
 	_runner_placed = false
@@ -169,12 +170,15 @@ func _finish(caught: bool) -> void:
 		var streak_mult: float = 1.0 + 0.25 * float(GameState.chase_streak - 1)
 		var bonus: float = GameState.amount_per_click * bonus_multiplier * streak_mult
 		GameState.add_gaze(bonus)
+		Audio.stop("ChaseStart")
+		Audio.play("Catch")
 		status_label.text = "Caught! +%s Gaze (streak x%d)" % [
 			GameState.format_number(bonus), GameState.chase_streak
 		]
 	else:
 		GameState.chase_streak = 0
 		GameState.chases_failed += 1
+		Audio.play("Escape")
 		status_label.text = "They escaped your gaze!"
 	
 	_finished = true

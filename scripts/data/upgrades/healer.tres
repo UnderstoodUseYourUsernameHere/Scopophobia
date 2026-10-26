@@ -7,8 +7,10 @@
 script = ExtResource("2_8geyw")
 id = &"Healer"
 display_name = "Healer"
-description = "Eye for an eye, can buy more with the right type of cash though! "
+description = "Eye for an eye, can buy more with the right type of cash though! 
+
+Offsets Eye for an Eye, so gives you extra gaze per second."
 icon = ExtResource("1_lmmss")
-base_cost = 250.0
+base_cost = 100.0
 cost_multiplier = 1.05
 gaze_per_click_bonus = 2.0

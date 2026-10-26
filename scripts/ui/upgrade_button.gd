@@ -16,6 +16,7 @@ func setup(upgrade_data: UpgradeData) -> void:
 func _on_pressed() -> void:
 	if data == null:
 		return
+	Audio.play("Buy")
 	var count: int = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
 	for i in count:
 		if not GameState.buy_upgrade(data):

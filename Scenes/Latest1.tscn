@@ -77,12 +77,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cr34r")
 person_scene = ExtResource("3_dwu4x")
-spawn_interval = 0.8999999999999999
-max_people = 6
-clickable_chance = 0.63
+spawn_interval = 1.1
+max_people = 11
+clickable_chance = 0.46
 far_y_ratio = 0.84
 near_y_ratio = 0.92
 near_scale = 0.29
+far_speed = 65.0
+near_speed = 150.0
 
 [node name="BackgroundEye" parent="MainLayout/PlayArea/Street" unique_id=1206677355 instance=ExtResource("8_mreed")]
 z_index = 100
@@ -91,11 +93,11 @@ offset_left = -31.0
 offset_top = -76.0
 offset_right = -31.0
 offset_bottom = -76.0
-max_pupil_offset = 163.0
-follow_speed = 6.5
-glance_min_delay = 2.0
-glance_max_delay = 4.0
-glance_duration = 3.6
+max_pupil_offset = 170.0
+follow_speed = 8.0
+glance_min_delay = 3.0
+glance_max_delay = 5.0
+glance_duration = 4.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/PlayArea" unique_id=1947754693]
 z_index = -6
@@ -184,9 +186,14 @@ autostart = true
 
 [node name="SettingsButton" type="Button" parent="." unique_id=1822038802]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 42)
 layout_mode = 0
-offset_right = 137.0
-offset_bottom = 81.0
+offset_left = 717.0
+offset_top = 75.0
+offset_right = 854.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 18
+text = "⚙ Settings"
 
 [node name="SettingsMenu" parent="." unique_id=1238915939 instance=ExtResource("15_16n3g")]
 unique_name_in_owner = true

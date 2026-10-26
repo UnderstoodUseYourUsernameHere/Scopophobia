@@ -1,33 +1,46 @@
 [gd_scene format=3 uid="uid://bdvuetbnjggqs"]
 
 [ext_resource type="Script" uid="uid://xhtoqdk28x4c" path="res://audio/audio.gd" id="1_rqear"]
+[ext_resource type="AudioStream" uid="uid://c2uloxy2uhpya" path="res://audio/kenney_impact-sounds/Audio/impactMining_001.ogg" id="2_5tuxm"]
+[ext_resource type="AudioStream" uid="uid://bmrj302xduimo" path="res://audio/Phantasm.mp3" id="2_snds3"]
+[ext_resource type="AudioStream" uid="uid://gxpkdd83wi2j" path="res://audio/kenney_interface-sounds/Audio/confirmation_004.ogg" id="2_vnuy2"]
+[ext_resource type="AudioStream" uid="uid://cciwe5hyerwtk" path="res://audio/Controlled Chaos.mp3" id="5_6yp2d"]
+[ext_resource type="AudioStream" uid="uid://douja0bp1gl2a" path="res://audio/kenney_interface-sounds/Audio/scratch_005.ogg" id="6_kevv0"]
 
 [node name="Audio" type="Node" unique_id=527564819]
 script = ExtResource("1_rqear")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=826454495]
-volume_db = -10.0
+stream = ExtResource("2_snds3")
+volume_db = -9.0
 autoplay = true
 bus = &"Music"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=549900033]
+stream = ExtResource("2_5tuxm")
 volume_db = -6.0
 max_polyphony = 4
 bus = &"SFX"
 
 [node name="Buy" type="AudioStreamPlayer" parent="." unique_id=2147417279]
+stream = ExtResource("2_vnuy2")
 volume_db = -4.0
 max_polyphony = 2
 bus = &"SFX"
 
 [node name="ChaseStart" type="AudioStreamPlayer" parent="." unique_id=831266910]
+stream = ExtResource("5_6yp2d")
 volume_db = -4.0
 bus = &"SFX"
 
 [node name="Catch" type="AudioStreamPlayer" parent="." unique_id=2004365788]
-volume_db = -2.0
+stream = ExtResource("2_vnuy2")
+volume_db = -5.0
+pitch_scale = 0.45
 bus = &"SFX"
 
 [node name="Escape" type="AudioStreamPlayer" parent="." unique_id=1528255323]
-volume_db = -2.0
+stream = ExtResource("6_kevv0")
+volume_db = -6.0
+pitch_scale = 1.01
 bus = &"SFX"

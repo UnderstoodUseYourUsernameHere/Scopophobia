@@ -19,6 +19,7 @@ var _shake_tween: Tween
 
 func _ready() -> void:
 	settings_menu.closed.connect(_close_settings)
+	settings_menu.reset_requested.connect(_on_reset_pressed)
 	settings_button.pressed.connect(_open_settings)
 	_shake_origin = shake_target.position
 	reset_button.pressed.connect(_on_reset_pressed)
@@ -26,6 +27,8 @@ func _ready() -> void:
 	_reset_confirmation.title = "Reset progress?"
 	_reset_confirmation.dialog_text = "Erase all progress? This cannot be undone."
 	_reset_confirmation.confirmed.connect(_confirm_reset)
+	_reset_confirmation.process_mode = Node.PROCESS_MODE_ALWAYS
+	_reset_confirmation.canceled.connect(_on_reset_cancelled)
 	add_child(_reset_confirmation)
 	street.person_clicked.connect(_on_person_clicked)
 	GameState.upgrade_purchased.connect(_on_upgrade_purchased)
@@ -53,10 +56,15 @@ func _close_settings() -> void:
 
 func _confirm_reset() ->  void:
 	GameState.reset_data()
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_reset_pressed() -> void:
+	settings_menu.hide()
 	_reset_confirmation.popup_centered()
+
+func _on_reset_cancelled() -> void:
+	get_tree().paused = false
 
 func _on_person_clicked(person: Person) -> void:
 	var gained : float = GameState.amount_per_click
@@ -131,7 +139,7 @@ func _on_save_timer_timeout() -> void:
 	GameState.save_data()
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+	if what != NOTIFICATION_WM_CLOSE_REQUEST:
 		return
 	if is_instance_valid(settings_menu) and settings_menu.visible:
 		settings_menu.save_settings()
