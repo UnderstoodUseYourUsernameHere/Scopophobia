@@ -23,8 +23,12 @@ Orrrrr, you can do this:
 ## Whats New
 
 New features: 
--Two added upgrades, one that subtracts your gaze per click but adds extra gaze per second, and one that heals that gaze per click. 
-- Minigame function after upgrade is bought, when you click on an upgrade that upgrades icon is spawned over a person, and when that person is clicked it begins a minigame where you must click over a person that is actively running away for 9x the gaze amount. This is on a timer so you cant repeatedly do it. 
+-Three upgrades, 
+Watcher: The base upgrade, adds 0.5 passive gaze/s and costs 20, gets 1.10x more expensive each time you buy it.
+Sacrifice: Eye for an eye, the theme is that you give up your eye (half of your gaze earnings per click) to get an improvement elsewhere, (2 gaze/s passive), i know this is terribly balanced but ive got no soul left in me after spending so much time on it to bother changing that.
+Healer: Heals your lost eye for a cost, which gets you back 2 gaze per click, its also the most expensive upgrade. 
+
+- Minigame function after upgrade is bought, when you click on an upgrade that upgrades icon is spawned over a person, and when that person is clicked it begins a minigame where you must click over a person that is actively running away for 16x the gaze amount. This is on a timer so you cant repeatedly do it. 
 - Eye in the background that follows you and occasionally locks onto a minigamed person. 
 
 - A new background! Drew it myself, which is why its terrible! 
