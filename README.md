@@ -17,6 +17,8 @@ Orrrrr, you can do this:
 - Click the bright people on the street to get Gaze
 - Dark people are not clickable
 - Buy upgrades on the right
+- When upgrades are bought, the icon of the upgrade spawns ontop of a clickable person, when that person is then clicked it starts a small minigame with a large multiplier on gaze earned from that click if won!
+- Offline gaze earnings, up to a certain limit, the game will give you gaze passively earned when you were offline. 
 
 ## Whats New
 
@@ -29,6 +31,15 @@ New features:
 
 - Clear all button, this was mostly for *my* debug but this is pretty useful i guess.  
 
+- Added a confirmation popup to the clear all button
+
+- Added a settings menu, includes volume bars for music and sfx seperately, with a keybinding hint. 
+
+- Tweaked minigame difficulty (it isnt bugged, clicking the person does work, its just hard) 
+
+- Added background audio and sfx on clicking, buying, and music in the chase minigame. 
+
+- Tweaked upgrade economy and changed healer icon. 
 
 This is hopefully pretty simple! Coded in... Gdscript, obviously, using Godot 4. 
 
