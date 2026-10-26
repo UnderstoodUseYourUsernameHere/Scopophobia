@@ -3,15 +3,30 @@ extends Control
 @onready var street: Street = %Street
 @onready var save_timer: Timer = %SaveTimer
 @onready var reset_button: Button = %ResetButton
+@onready var settings_button: Button = %SettingsButton
+@onready var settings_menu: SettingsMenu = %SettingsMenu
+@onready var shake_target: Control = %MainLayout
 @export var upgrade_icon_scene: PackedScene
 @export var clicked_text_scene: PackedScene
 @export var chase_minigame_scene: PackedScene
 @export var max_upgrade_icons: int = 4
 @export_range(0.0, 120.0, 1.0) var chase_cooldown_seconds: float = 20.0 
+
 var _chase_cooldown_remaining: float = 0.0
+var _reset_confirmation: ConfirmationDialog
+var _shake_origin: Vector2	
+var _shake_tween: Tween
 
 func _ready() -> void:
+	settings_menu.closed.connect(_close_settings)
+	settings_button.pressed.connect(_open_settings)
+	_shake_origin = shake_target.position
 	reset_button.pressed.connect(_on_reset_pressed)
+	_reset_confirmation = ConfirmationDialog.new()
+	_reset_confirmation.title = "Reset progress?"
+	_reset_confirmation.dialog_text = "Erase all progress? This cannot be undone."
+	_reset_confirmation.confirmed.connect(_confirm_reset)
+	add_child(_reset_confirmation)
 	street.person_clicked.connect(_on_person_clicked)
 	GameState.upgrade_purchased.connect(_on_upgrade_purchased)
 	save_timer.timeout.connect(_on_save_timer_timeout)
@@ -28,9 +43,20 @@ func _show_offline_gain() -> void:
 	dialog.popup_centered()
 	GameState.pending_offline_gain = 0.0
 
-func _on_reset_pressed() -> void:
+func _open_settings() -> void:
+	settings_menu.open_menu()
+	get_tree().paused = true
+
+func _close_settings() -> void:
+	settings_menu.hide()
+	get_tree().paused = false 
+
+func _confirm_reset() ->  void:
 	GameState.reset_data()
 	get_tree().reload_current_scene()
+
+func _on_reset_pressed() -> void:
+	_reset_confirmation.popup_centered()
 
 func _on_person_clicked(person: Person) -> void:
 	var gained : float = GameState.amount_per_click
@@ -106,4 +132,7 @@ func _on_save_timer_timeout() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		GameState.save_data()
+		return
+	if is_instance_valid(settings_menu) and settings_menu.visible:
+		settings_menu.save_settings()
+	GameState.save_data()

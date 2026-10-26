@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dnvvxbfh35crt"]
+
+[ext_resource type="Script" uid="uid://b2ewd2ttf1mwb" path="res://scripts/ui/settings_menu.gd" id="1_icv2g"]
+
+[node name="SettingsMenu" type="Control" unique_id=1238915939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_icv2g")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=824614586]
+modulate = Color(0.06100855, 0.06100855, 0.06100855, 0.693)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=212723085]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1774505245]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=2015552507]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1188056051]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=128384273]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/Panel/VBoxContainer" unique_id=1206117067]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=402944572]
+layout_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/Panel/VBoxContainer" unique_id=2139869477]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Hint" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=224619043]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1263017806]
+layout_mode = 2
+text = "Close!"

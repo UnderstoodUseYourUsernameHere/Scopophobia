@@ -39,4 +39,15 @@ func get_bus_volume(bus_name: String) -> float:
 	return clampf(db_to_linear(AudioServer.get_bus_volume_db(index)), 0.0, 1.0)
 
 func save_volume_settings(music: float, sfx: float) -> void:
-	var config
+	var config := ConfigFile.new()
+	config.set_value("audio", "music", music)
+	config.set_value("audio", "sfx", sfx)
+	var error: Error = config.save(SETTINGS_PATH)
+	if error != OK:
+		push_warning("Could not save audio preferences!")
+
+func toggle_master_mute() -> void:
+	var index: int = AudioServer.get_bus_index("Master")
+	if index == -1:
+		return
+	AudioServer.set_bus_mute(index, not AudioServer.is_bus_mute(index))

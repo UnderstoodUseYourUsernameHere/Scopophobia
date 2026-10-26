@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cjg6l71qge1qt" path="res://assets/heal.png" id="17_cmnm8"]
 [ext_resource type="Script" uid="uid://vomayg38sr2h" path="res://scripts/data/upgrade_data.gd" id="18_24fqt"]
 [ext_resource type="Resource" uid="uid://bah00snvdgspi" path="res://scripts/data/upgrades/watcher.tres" id="20_ogy8s"]
+[ext_resource type="PackedScene" uid="uid://dnvvxbfh35crt" path="res://Scenes/settings_menu.tscn" id="15_16n3g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rbm7"]
 texture = ExtResource("2_d6pld")
@@ -63,6 +64,7 @@ chase_minigame_scene = ExtResource("4_16n3g")
 chase_cooldown_seconds = 15.0
 
 [node name="MainLayout" type="HBoxContainer" parent="." unique_id=1596672730]
+unique_name_in_owner = true
 z_index = -10
 custom_minimum_size = Vector2(1.99, 0)
 layout_mode = 1
@@ -180,6 +182,12 @@ theme_override_font_sizes/font_size = 18
 theme_override_icons/icon = ExtResource("11_4rbm7")
 text = "Reset all your progress! "
 
+[node name="SettingsButton" type="Button" parent="MainLayout/PlayArea" unique_id=1822038802]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="RightPanel" type="Panel" parent="MainLayout" unique_id=1596904899]
 z_index = -10
 custom_minimum_size = Vector2(300, 0)
@@ -199,7 +207,12 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 0
 upgrade_button_scene = ExtResource("8_s22n3")
+
 upgrades = Array[ExtResource("18_24fqt")]([ExtResource("20_ogy8s"), SubResource("Resource_c7t14"), SubResource("Resource_fhqst")])
+
+[node name="SettingsMenu" parent="." unique_id=1238915939 instance=ExtResource("15_16n3g")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="SaveTimer" type="Timer" parent="." unique_id=285725208]
 unique_name_in_owner = true
