@@ -4,7 +4,6 @@
 
 [node name="Audio" type="Node" unique_id=527564819]
 script = ExtResource("1_rqear")
-sfx_pitch_jitter = null
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=826454495]
 volume_db = -10.0

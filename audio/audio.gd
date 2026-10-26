@@ -1,6 +1,8 @@
 extends Node
 ## To use the audio anywhere since its an autoload just use Audio.play("Click") Or any of the other effects.
 
+const SETTINGS_PATH := "user://audio_settings.cfg"
+
 @export_range(0.0,0.5, 0.1) var sfx_pitch_jitter: float = 0.08
 
 func play(sound_name: StringName) -> void:
@@ -10,7 +12,7 @@ func play(sound_name: StringName) -> void:
 		return
 	if player.stream == null:
 		return
-	player.pitch_scale = 1.0 + randf_range(-sfx_pitch_jitter, sfx_pitch_jitter)\
+	player.pitch_scale = 1.0 + randf_range(-sfx_pitch_jitter, sfx_pitch_jitter)
 	player.play()
 
 func set_bus_volume(bus_name: String, linear: float) -> void:
@@ -19,3 +21,22 @@ func set_bus_volume(bus_name: String, linear: float) -> void:
 		return
 	AudioServer.set_bus_volume_db(index, linear_to_db(clampf(linear, 0.0001, 1.0)))
 	AudioServer.set_bus_mute(index, linear <= 0.0001)
+
+func _ready() -> void:
+	var config := ConfigFile.new()
+	if config.load(SETTINGS_PATH) != OK:
+		return
+	
+	set_bus_volume("Music", float(config.get_value("audio", "music", 1.0)))
+	set_bus_volume("SFX", float(config.get_value("audio", "sfx", 1.0)))
+
+func get_bus_volume(bus_name: String) -> float:
+	var index: int = AudioServer.get_bus_index(bus_name)
+	if index == 1:
+		return 1.0
+	if AudioServer.is_bus_mute(index):
+		return 0.0
+	return clampf(db_to_linear(AudioServer.get_bus_volume_db(index)), 0.0, 1.0)
+
+func save_volume_settings(music: float, sfx: float) -> void:
+	var config
